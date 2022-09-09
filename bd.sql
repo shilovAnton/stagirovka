@@ -1,36 +1,36 @@
-CREATE TABLE library_card /*читательский билет*/
+CREATE TABLE library_card /*С‡РёС‚Р°С‚РµР»СЊСЃРєРёР№ Р±РёР»РµС‚*/
 (
 "id"                        NUMBER          PRIMARY KEY,
 name_readers                VARCHAR2(60 CHAR),
-surname_readers             VARCHAR2(60 CHAR),/*фамилия читателя*/
-date_of_birth               DATE, /*дата рождения*/
-date_of_issue_card          DATE,/*дата выдачи билета*/
-delivery_date_card          DATE,/*дата сдачи билета*/
-sum_fines                   NUMBER,/*штрафы*/
+surname_readers             VARCHAR2(60 CHAR),/*С„Р°РјРёР»РёСЏ С‡РёС‚Р°С‚РµР»СЏ*/
+date_of_birth               DATE, /*РґР°С‚Р° СЂРѕР¶РґРµРЅРёСЏ*/
+date_of_issue_card          DATE,/*РґР°С‚Р° РІС‹РґР°С‡Рё Р±РёР»РµС‚Р°*/
+delivery_date_card          DATE,/*РґР°С‚Р° СЃРґР°С‡Рё Р±РёР»РµС‚Р°*/
+sum_fines                   NUMBER,/*С€С‚СЂР°С„С‹*/
 id_reader_rating            NUMBER,
 id_role                     NUMBER
 );
 
-CREATE TABLE issuance_log /*журнаал выдачи*/
+CREATE TABLE issuance_log /*Р¶СѓСЂРЅР°Р°Р» РІС‹РґР°С‡Рё*/
 (
 "id"                        NUMBER          PRIMARY KEY,
 id_service_category         NUMBER,
 inventory_number            NUMBER,
 id_libray_card              NUMBER,
-date_of_issue_book          DATE,/*дата выдачи книги*/
-delivery_date_book          DATE,/*дата сдачи книги*/
-fact_date_book              DATE/*фактическая дата сдачи книги*/
+date_of_issue_book          DATE,/*РґР°С‚Р° РІС‹РґР°С‡Рё РєРЅРёРіРё*/
+delivery_date_book          DATE,/*РґР°С‚Р° СЃРґР°С‡Рё РєРЅРёРіРё*/
+fact_date_book              DATE/*С„Р°РєС‚РёС‡РµСЃРєР°СЏ РґР°С‚Р° СЃРґР°С‡Рё РєРЅРёРіРё*/
 );
 
 CREATE TABLE inventory_number
 (
 "id"                        NUMBER,
 id_book                     NUMBER,
-arrival_book                DATE,/*дата прибытия на склад*/
-write_off_date_book         DATE/*дата списания книги*/
+arrival_book                DATE,/*РґР°С‚Р° РїСЂРёР±С‹С‚РёСЏ РЅР° СЃРєР»Р°Рґ*/
+write_off_date_book         DATE/*РґР°С‚Р° СЃРїРёСЃР°РЅРёСЏ РєРЅРёРіРё*/
 );
 
-CREATE TABLE publishing_house_book /*связующая таблица*/
+CREATE TABLE publishing_house_book /*СЃРІСЏР·СѓСЋС‰Р°СЏ С‚Р°Р±Р»РёС†Р°*/
 (
 "id"                        NUMBER          PRIMARY KEY,
 id_publishing_house_book    NUMBER          NOT NULL,
@@ -43,38 +43,38 @@ CREATE TABLE publishing_house
 publishing_house            VARCHAR2(60 CHAR)     NOT NULL
 );
 
-CREATE TABLE tags_book /*связующая таблица*/
+CREATE TABLE tags_book /*СЃРІСЏР·СѓСЋС‰Р°СЏ С‚Р°Р±Р»РёС†Р°*/
 (
 "id"                        NUMBER          PRIMARY KEY,
 id_tag                      NUMBER          NOT NULL,
 id_book                     NUMBER          NOT NULL
 );
 
-CREATE TABLE tags /*теги*/
+CREATE TABLE tags /*С‚РµРіРё*/
 (
 "id"                        NUMBER          PRIMARY KEY,
 tag                         VARCHAR2(60 CHAR)     NOT NULL
 );
 
-CREATE TABLE service_category /*абонемент/читалььный зал*/
+CREATE TABLE service_category /*Р°Р±РѕРЅРµРјРµРЅС‚/С‡РёС‚Р°Р»СЊСЊРЅС‹Р№ Р·Р°Р»*/
 (
 "id"                        NUMBER          PRIMARY KEY,
 service_category            VARCHAR(60 CHAR)     NOT NULL
 );
 
-CREATE TABLE age_limit /*возрастное ограничение*/
+CREATE TABLE age_limit /*РІРѕР·СЂР°СЃС‚РЅРѕРµ РѕРіСЂР°РЅРёС‡РµРЅРёРµ*/
 (
 "id"                        NUMBER          PRIMARY KEY,
 age_limit                   NUMBER          NOT NULL
 );
 
-CREATE TABLE reader_rating /*возрастное ограничение*/
+CREATE TABLE reader_rating /*РІРѕР·СЂР°СЃС‚РЅРѕРµ РѕРіСЂР°РЅРёС‡РµРЅРёРµ*/
 (
 "id"                        NUMBER          PRIMARY KEY,
 reader_rating               NUMBER          NOT NULL
 );
 
-CREATE TABLE book_type /*книга/журнал*/
+CREATE TABLE book_type /*РєРЅРёРіР°/Р¶СѓСЂРЅР°Р»*/
 (
 "id"                        NUMBER          PRIMARY KEY,
 book_type                   VARCHAR(60 CHAR)     NOT NULL
@@ -92,14 +92,14 @@ CREATE TABLE author
 author                      VARCHAR(60 CHAR)     NOT NULL
 );
 
-CREATE TABLE author_book /*переходная таблица*/
+CREATE TABLE author_book /*РїРµСЂРµС…РѕРґРЅР°СЏ С‚Р°Р±Р»РёС†Р°*/
 (
 "id"                        NUMBER          PRIMARY KEY,
 id_author                   NUMBER          NOT NULL,
 id_book                     NUMBER          NOT NULL
 );
 
-CREATE TABLE genre_book /*переходная таблица*/
+CREATE TABLE genre_book /*РїРµСЂРµС…РѕРґРЅР°СЏ С‚Р°Р±Р»РёС†Р°*/
 (
 "id"                        NUMBER          PRIMARY KEY,
 id_genre                    NUMBER          NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE books
 "id"                        NUMBER              PRIMARY KEY,
 name_book                   VARCHAR2(100 CHAR)  NOT NULL,
 tom                         NUMBER,
-amount/*количество*/        NUMBER,
+amount/*РєРѕР»РёС‡РµСЃС‚РІРѕ*/        NUMBER,
 id_book_type                NUMBER,
 id_age_limit                NUMBER,
 year_of_publishing          DATE,
@@ -123,42 +123,6 @@ CREATE TABLE "ROLES"
 "id"                        NUMBER              PRIMARY KEY,
 "role"                      VARCHAR2(60 CHAR)   NOT NULL
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

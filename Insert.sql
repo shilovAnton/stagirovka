@@ -1,101 +1,101 @@
-/*��������� books*/
+/*заполняем books*/
 INSERT INTO BOOKS ("id", NAME_BOOK, TOM, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (1, '����� � ���', 1, 20, 1, 1500);
+    VALUES (1, 'Война и мир', 1, 20, 1, 1500);
 INSERT INTO BOOKS ("id", NAME_BOOK, TOM, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (2, '����� � ���', 2, 19, 1, 1400);
+    VALUES (2, 'Война и мир', 2, 19, 1, 1400);
 INSERT INTO BOOKS ("id", NAME_BOOK, TOM, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (3, '����� � ���', 3, 18, 1, 1300);
+    VALUES (3, 'Война и мир', 3, 18, 1, 1300);
 INSERT INTO BOOKS ("id", NAME_BOOK, TOM, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (4, '����� � ���', 4, 17, 1, 1200);
+    VALUES (4, 'Война и мир', 4, 17, 1, 1200);
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (5, '������ ����������', 10, 2, 1000);
+    VALUES (5, 'Братья Карамазовы', 10, 2, 1000);
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (6, '������ ����������', 9, 2, 900);
+    VALUES (6, 'Братья Карамазовы', 9, 2, 900);
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (7, '������ ����������', 8, 2, 1100);
+    VALUES (7, 'Братья Карамазовы', 8, 2, 1100);
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (8, '������ ����������', 7, 2, 1200);
+    VALUES (8, 'Братья Карамазовы', 7, 2, 1200);
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (9, '������ ����������', 6, 2, 1300);
+    VALUES (9, 'Братья Карамазовы', 6, 2, 1300);
 INSERT INTO BOOKS ("id", NAME_BOOK, TOM, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (10, '����� ���. � 2-� �����', 1, 5, 2, 900);
+    VALUES (10, 'Тихий Дон. В 2-х томах', 1, 5, 2, 900);
 INSERT INTO BOOKS ("id", NAME_BOOK, TOM, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (11, '����� ���. � 2-� �����', 2, 5, 2, 1000);
+    VALUES (11, 'Тихий Дон. В 2-х томах', 2, 5, 2, 1000);
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (12, '���� � ����', 6, 2, 1200);
+    VALUES (12, 'Отцы и дети', 6, 2, 1200);
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (13, '����� ������ �������', 7, 2, 1000);
+    VALUES (13, 'Герой нашего времени', 7, 2, 1000);
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (14, '���� �� ���', 3, 2, 1000);
+    VALUES (14, 'Горе от ума', 3, 2, 1000);
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (15, '�������������� �����', 2, 2, 1000);
+    VALUES (15, 'Педагогическая поэма', 2, 2, 1000);
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (16, '�������� ���', 2, 2, 1000);
+    VALUES (16, 'Вишневый сад', 2, 2, 1000);
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (17, '���� ��������', 2, 2, 1000);
-INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE)
-    VALUES (18, '������� ������', 2, 2, 1000);
+    VALUES (17, 'Анна Каренина', 2, 2, 1000);
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (19, '������ ��������', 2, 2, 1000);
+    VALUES (18, 'Евгений Онегин', 2, 2, 1000);
+INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
+    VALUES (19, 'Судьба человека', 2, 2, 1000);
     
     
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (20, '������ ���-�� ����', 2, 2, 1000);
+    VALUES (20, 'Внутри что-то есть', 2, 2, 1000);
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (21, '���� ������ ������. ������� ���������', 2, 2, 1000);
+    VALUES (21, 'Чуть правее сердца. Сборник рассказов', 2, 2, 1000);
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (22, '������ �� �����������', 2, 2, 1000);
+    VALUES (22, 'Никому не рассказывай', 2, 2, 1000);
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (23, '������ � ������������', 2, 2, 1000);
+    VALUES (23, 'Письмо с подснежником', 2, 2, 1000);
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (24, '�����, ������ � ��������', 2, 2, 1000); 
+    VALUES (24, 'Стихи, сказки и рассказы', 2, 2, 1000); 
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (25, '������� ������ ������� ���������.', 2, 2, 1000);   
+    VALUES (25, 'Сборник лучших смешных рассказов.', 2, 2, 1000);   
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (26, '����� � �������� � ������', 2, 2, 1000);   
+    VALUES (26, 'Стихи и рассказы о Родине', 2, 2, 1000);   
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (27, '���-���-��� ������', 2, 2, 1000);   
+    VALUES (27, 'Все-все-все сказки', 2, 2, 1000);   
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (28, '��� ��������� � ���������', 2, 2, 1000);  
+    VALUES (28, 'Над пропастью в поколение', 2, 2, 1000);  
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (29, '������ � �������� ������� ���������', 2, 2, 1000);
+    VALUES (29, 'Сказки и рассказы русских писателей', 2, 2, 1000);
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE) 
-    VALUES (30, '1000 ���������, ������ � ������', 2, 2, 1000);  
+    VALUES (30, '1000 рассказов, сказок и стихов', 2, 2, 1000);  
     
     
-/*��������� AUTHOR*/
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (1, '�������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (2, '�����������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (3, '�������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (4, '��������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (5, '���������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (6, '���������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (7, '���������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (8, '������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (9, '�����');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (10, '������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (11, '������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (12, '������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (13, '���������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (14, '���������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (15, '���������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (16, '��������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (17, '��������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (18, '�����������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (19, '�������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (20, '����������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (21, '����');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (22, '������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (23, '��������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (24, '��������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (25, '����������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (26, '��������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (27, '�����');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (28, '�������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (29, '������');
-INSERT INTO AUTHOR ("id", AUTHOR) VALUES (30, '������');
+/*заполняем AUTHOR*/
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (1, 'Толстой');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (2, 'Достоевский');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (3, 'Шолохов');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (4, 'Тургенев');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (5, 'Лермонтов');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (6, 'Грибоедов');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (7, 'Макаренко');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (8, 'Гоголь');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (9, 'Чехов');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (10, 'Пушкин');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (11, 'Басова');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (12, 'Минаев');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (13, 'Дашевская');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (14, 'Кравченко');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (15, 'Богатырёва');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (16, 'Ключарёва');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (17, 'Сазонова');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (18, 'Ленковскаая');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (19, 'Сладков');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (20, 'Машковская');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (21, 'Твен');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (22, 'Джером');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (23, 'Кухаркин');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (24, 'Михалков');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (25, 'Драгунский');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (26, 'Крусанов');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (27, 'Бажов');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (28, 'Пришвин');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (29, 'Тютчев');
+INSERT INTO AUTHOR ("id", AUTHOR) VALUES (30, 'Есенин');
 
-/*��������� AUTHOR_BOOK*/
+/*заполняем AUTHOR_BOOK*/
 INSERT INTO AUTHOR_BOOK ("id", ID_BOOK, ID_AUTHOR) VALUES (1, 1, 1);
 INSERT INTO AUTHOR_BOOK ("id", ID_BOOK, ID_AUTHOR) VALUES (2, 2, 1);
 INSERT INTO AUTHOR_BOOK ("id", ID_BOOK, ID_AUTHOR) VALUES (3, 3, 1);
@@ -138,18 +138,18 @@ INSERT INTO AUTHOR_BOOK ("id", ID_BOOK, ID_AUTHOR) VALUES (38, 29, 28);
 INSERT INTO AUTHOR_BOOK ("id", ID_BOOK, ID_AUTHOR) VALUES (39, 30, 29);
 INSERT INTO AUTHOR_BOOK ("id", ID_BOOK, ID_AUTHOR) VALUES (40, 30, 30);
     
-/*��������� PUBLISHING_HOUSE*/ 
-INSERT INTO PUBLISHING_HOUSE VALUES (1, '�����');
-INSERT INTO PUBLISHING_HOUSE VALUES (2, '����');
-INSERT INTO PUBLISHING_HOUSE VALUES (3, '������������� ������');
-INSERT INTO PUBLISHING_HOUSE VALUES (4, '�������� ����');
-INSERT INTO PUBLISHING_HOUSE VALUES (5, '���');
-INSERT INTO PUBLISHING_HOUSE VALUES (6, '������� �������');
-INSERT INTO PUBLISHING_HOUSE VALUES (7, '�����');
-INSERT INTO PUBLISHING_HOUSE VALUES (8, '�����-�����');
-INSERT INTO PUBLISHING_HOUSE VALUES (9, '������');
+/*заполняем PUBLISHING_HOUSE*/ 
+INSERT INTO PUBLISHING_HOUSE VALUES (1, 'Эксмо');
+INSERT INTO PUBLISHING_HOUSE VALUES (2, 'Речь');
+INSERT INTO PUBLISHING_HOUSE VALUES (3, 'Академический проект');
+INSERT INTO PUBLISHING_HOUSE VALUES (4, 'Классика речи');
+INSERT INTO PUBLISHING_HOUSE VALUES (5, 'АСТ');
+INSERT INTO PUBLISHING_HOUSE VALUES (6, 'Молодая гвардия');
+INSERT INTO PUBLISHING_HOUSE VALUES (7, 'Литер');
+INSERT INTO PUBLISHING_HOUSE VALUES (8, 'Альфа-книга');
+INSERT INTO PUBLISHING_HOUSE VALUES (9, 'Родина');
 
-/*��������� PUBLISHING_HOUSE_BOOK*/
+/*заполняем PUBLISHING_HOUSE_BOOK*/
 INSERT INTO PUBLISHING_HOUSE_BOOK VALUES (1, 1, 5);
 INSERT INTO PUBLISHING_HOUSE_BOOK VALUES (2, 1, 6);
 INSERT INTO PUBLISHING_HOUSE_BOOK VALUES (3, 1, 7);
@@ -181,97 +181,52 @@ INSERT INTO PUBLISHING_HOUSE_BOOK VALUES (28, 3, 28);
 INSERT INTO PUBLISHING_HOUSE_BOOK VALUES (29, 4, 29);
 INSERT INTO PUBLISHING_HOUSE_BOOK VALUES (30, 5, 30);
 
-/*��������� LIBRARY_CARD*/
+/*заполняем LIBRARY_CARD*/
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (1, '�����', '�����', 0, 1);
+    VALUES (1, 'Антон', 'Шилов', 0, 1);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (2, '������', '����', 0, 1);
+    VALUES (2, 'Сергей', 'Яхно', 0, 1);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (3, '�����', '�����', 0, 1);
+    VALUES (3, 'Павел', 'Струк', 0, 1);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (4, '��������', '���������', 100, 1);
+    VALUES (4, 'Анатолий', 'Вассерман', 100, 1);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (5, '������', '����������', 200, 1);
+    VALUES (5, 'Наташа', 'Плотникова', 200, 1);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (6, '�������', '������', 0, 1);
+    VALUES (6, 'Татьяна', 'Шилова', 0, 1);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (7, '������', '���������', 300, 1);
+    VALUES (7, 'Марина', 'Гаврилова', 300, 1);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (8, '������', '�����', 0, 1);
+    VALUES (8, 'Кирилл', 'Сайко', 0, 1);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (9, '�������', '��������', 0, 1);
+    VALUES (9, 'Виталий', 'Игнатьев', 0, 1);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (10, '�������', '����', 0, 1);
+    VALUES (10, 'Алексей', 'Даль', 0, 1);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (11, '�����', '���������', 0, 1);
+    VALUES (11, 'Павел', 'Коврижных', 0, 1);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (12, '�������', '�������', 0, 1);
+    VALUES (12, 'Дмитрий', 'Лобанов', 0, 1);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (13, '���������', '��������', 0, 2);
+    VALUES (13, 'Александр', 'Горбатюк', 0, 2);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (14, '�������', '��������', 0, 2);
+    VALUES (14, 'Татьяна', 'Голикова', 0, 2);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (15, '���������', '����������', 0, 2);
+    VALUES (15, 'Екатерина', 'Симбирцева', 0, 2);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (16, '������', '��������', 0, 2);
+    VALUES (16, 'Максим', 'Новицкий', 0, 2);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (17, '�������', '��������', 0, 2);
+    VALUES (17, 'Евгений', 'Максимов', 0, 2);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (18, '�������', '���������', 0, 2);
+    VALUES (18, 'Евгения', 'Алексеева', 0, 2);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (19, '�����', '�������', 0, 2);
+    VALUES (19, 'Дарья', 'Анохина', 0, 2);
 INSERT INTO LIBRARY_CARD ("id", NAME_READERS, SURNAME_READERS, SUM_FINES, ID_ROLE) 
-    VALUES (20, '�������', '�����', 0, 2);
+    VALUES (20, 'Дмитрий', 'Голуб', 0, 2);
 
-/*��������� ROLES*/
-INSERT INTO "ROLES" VALUES (1, '������');
-INSERT INTO "ROLES" VALUES (2, '��������� ����������');
-
-
+/*заполняем ROLES*/
+INSERT INTO "ROLES" VALUES (1, 'Клиент');
+INSERT INTO "ROLES" VALUES (2, 'Сотрудник библиотеки');
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
