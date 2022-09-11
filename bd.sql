@@ -5,10 +5,10 @@ name_readers                VARCHAR2(60 CHAR),
 surname_readers             VARCHAR2(60 CHAR),/*фамилия читателя*/
 date_of_birth               DATE, /*дата рождения*/
 date_of_issue_card          DATE,/*дата выдачи билета*/
-delivery_date_card          DATE,/*дата сдачи билета*/
 sum_fines                   NUMBER,/*штрафы*/
 id_reader_rating            NUMBER,
-id_role                     NUMBER
+id_role                     NUMBER,
+age_readers                 NUMBER
 );
 
 CREATE TABLE issuance_log /*журнаал выдачи*/
@@ -83,7 +83,7 @@ book_type                   VARCHAR(60 CHAR)     NOT NULL
 CREATE TABLE genres
 (
 "id"                        NUMBER          PRIMARY KEY,
-genres                      VARCHAR(60 CHAR)     NOT NULL
+genre                      VARCHAR(60 CHAR)     NOT NULL
 );
 
 CREATE TABLE author
