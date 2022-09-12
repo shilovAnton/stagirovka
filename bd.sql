@@ -1,8 +1,9 @@
 CREATE TABLE library_card /*читательский билет*/
 (
 "id"                        NUMBER          PRIMARY KEY,
-name_readers                VARCHAR2(60 CHAR),
-surname_readers             VARCHAR2(60 CHAR),/*фамилия читателя*/
+readers_lastname            VARCHAR2(60 CHAR),/*фамилия читателя*/
+readers_firstname           VARCHAR2(60 CHAR),
+readers_patronymic          VARCHAR2(60 CHAR),
 date_of_birth               DATE, /*дата рождения*/
 date_of_issue_card          DATE,/*дата выдачи билета*/
 sum_fines                   NUMBER,/*штрафы*/
@@ -33,8 +34,9 @@ write_off_date_book         DATE/*дата списания книги*/
 CREATE TABLE publishing_house_book /*связующая таблица*/
 (
 "id"                        NUMBER          PRIMARY KEY,
-id_publishing_house_book    NUMBER          NOT NULL,
-id_book                     NUMBER          NOT NULL
+id_book                     NUMBER          NOT NULL,
+id_publishing_house         NUMBER          NOT NULL,
+publication_date            DATE
 );
 
 CREATE TABLE publishing_house 
@@ -59,7 +61,7 @@ tag                         VARCHAR2(60 CHAR)     NOT NULL
 CREATE TABLE service_category /*абонемент/читалььный зал*/
 (
 "id"                        NUMBER          PRIMARY KEY,
-service_category            VARCHAR(60 CHAR)     NOT NULL
+service_category            VARCHAR2(60 CHAR)     NOT NULL
 );
 
 CREATE TABLE age_limit /*возрастное ограничение*/
@@ -88,8 +90,10 @@ genre                      VARCHAR(60 CHAR)     NOT NULL
 
 CREATE TABLE author
 (
-"id"                        NUMBER          PRIMARY KEY,
-author                      VARCHAR(60 CHAR)     NOT NULL
+"id"                        NUMBER              PRIMARY KEY,
+author_lastname             VARCHAR(60 CHAR)    NOT NULL,
+author_firstname            VARCHAR(60 CHAR),
+author_patronymic           VARCHAR(60 CHAR)
 );
 
 CREATE TABLE author_book /*переходная таблица*/
@@ -102,8 +106,8 @@ id_book                     NUMBER          NOT NULL
 CREATE TABLE genre_book /*переходная таблица*/
 (
 "id"                        NUMBER          PRIMARY KEY,
-id_genre                    NUMBER          NOT NULL,
-id_book                     NUMBER          NOT NULL
+id_book                     NUMBER          NOT NULL,
+id_genre                    NUMBER          NOT NULL
 );
 
 CREATE TABLE books
@@ -114,7 +118,6 @@ tom                         NUMBER,
 amount/*количество*/        NUMBER,
 id_book_type                NUMBER,
 id_age_limit                NUMBER,
-year_of_publishing          DATE,
 price                       NUMBER
 );
 

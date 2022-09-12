@@ -5,7 +5,7 @@ SELECT * FROM Library_Card
     WHERE AGE_READERS > 40;
 /* 3. Информацию по конкретному пользователю*/
 SELECT * FROM Library_Card
-    WHERE SURNAME_READERS = 'Шилов';
+    WHERE AUTHOR_FIRSTNAME = 'Шилов';
 /* 4. Информацию по всем печатным материалам*/
 SELECT * FROM BOOKS;
 /* 5. Информацию по всем печатным материалам относящихся к определенному типу*/
