@@ -17,6 +17,7 @@ CREATE TABLE issuance_log /*журнаал выдачи*/
 "id"                        NUMBER          PRIMARY KEY,
 id_service_category         NUMBER,
 inventory_number            NUMBER,
+id_book                     NUMBER,
 id_libray_card              NUMBER,
 date_of_issue_book          DATE,/*дата выдачи книги*/
 delivery_date_book          DATE,/*дата сдачи книги*/
@@ -29,14 +30,6 @@ CREATE TABLE inventory_number
 id_book                     NUMBER,
 arrival_book                DATE,/*дата прибытия на склад*/
 write_off_date_book         DATE/*дата списания книги*/
-);
-
-CREATE TABLE publishing_house_book /*связующая таблица*/
-(
-"id"                        NUMBER          PRIMARY KEY,
-id_book                     NUMBER          NOT NULL,
-id_publishing_house         NUMBER          NOT NULL,
-publication_date            DATE
 );
 
 CREATE TABLE publishing_house 
@@ -79,21 +72,21 @@ reader_rating               NUMBER          NOT NULL
 CREATE TABLE book_type /*книга/журнал*/
 (
 "id"                        NUMBER          PRIMARY KEY,
-book_type                   VARCHAR(60 CHAR)     NOT NULL
+book_type                   VARCHAR2(60 CHAR)     NOT NULL
 );
 
 CREATE TABLE genres
 (
 "id"                        NUMBER          PRIMARY KEY,
-genre                      VARCHAR(60 CHAR)     NOT NULL
+genre                      VARCHAR2(60 CHAR)     NOT NULL
 );
 
 CREATE TABLE author
 (
 "id"                        NUMBER              PRIMARY KEY,
-author_lastname             VARCHAR(60 CHAR)    NOT NULL,
-author_firstname            VARCHAR(60 CHAR),
-author_patronymic           VARCHAR(60 CHAR)
+author_lastname             VARCHAR2(60 CHAR)    NOT NULL,
+author_firstname            VARCHAR2(60 CHAR),
+author_patronymic           VARCHAR2(60 CHAR)
 );
 
 CREATE TABLE author_book /*переходная таблица*/
@@ -118,6 +111,8 @@ tom                         NUMBER,
 amount/*количество*/        NUMBER,
 id_book_type                NUMBER,
 id_age_limit                NUMBER,
+id_publishing_house         NUMBER,
+year_of_publishing          NUMBER,
 price                       NUMBER
 );
 
