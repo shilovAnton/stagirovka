@@ -1,5 +1,11 @@
-function second(string) {
-    split(string,array,",")
-    return array[3]
+
+
+BEGIN {
+    window = "true";
+    coller = "true";
+    home[0] = 5;
+    temp = 0;
+
 }
-BEGIN {print second("1,5,3");exit}
+/stat/ { print home[0]; exit }
+// { print "#error: unknown command";exit }
