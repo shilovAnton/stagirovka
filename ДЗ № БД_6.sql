@@ -156,8 +156,7 @@ FROM
     JOIN tags             t ON tb.id_tag = t."id"
 WHERE
     b.name_book = 'Горе от ума'
-    GROUP BY b.name_book, t."id")
-;
+    GROUP BY b.name_book, t."id");
 
 
     
