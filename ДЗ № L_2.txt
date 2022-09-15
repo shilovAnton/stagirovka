@@ -45,7 +45,7 @@
 
         - в которых есть слова test test, между которыми может быть число (любое),
         например test 999 test
-            egrep '(^| )test [[:digit:]* test( |$)]' regular.txt
+            egrep '(^| )test [[:digit:]]* test( |$)]' regular.txt
 
         - начинающиеся и заканчивающиеся одной и более цифрами
             egrep '^[[:digit:]]+.*[[:digit:]]+$' regular.txt
