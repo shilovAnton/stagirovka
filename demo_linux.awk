@@ -1,5 +1,7 @@
-function second(string) {
-    split(string,array,",")
-    return array[3]
+# Увеличить счётчик ролей
+{ stat[NF]++ }
+END {
+    for(i in stat) {
+        print i " : " stat[i]
+    }  
 }
-BEGIN {print second("1,5,3");exit}
