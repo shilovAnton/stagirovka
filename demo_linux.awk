@@ -30,21 +30,21 @@ function isCoolerOn(arg) {
 
 #поиск открытого окна
 function searchWindowOpen() {
-    for (i in home) {
+    for (i = 0; i < 10; i++) {
         if (home[i] == "[\\/]") {
-            return home[i];
-        }
-        return -1;
+        return i;
+        } 
     }
+    return -1;
 }
 #поиск включённого кондиционера
-function searcCoolerOn() {
+function searchCoolerOn() {
     for (i in home) {
-            if (home[i] ~ /[0-9]+/) {
-            return home[i];
+        if (home[i] ~ /[0-9]+/) {
+        return i;
         }
-        return -1;
     }
+    return -1;
 }
 
 BEGIN {
@@ -52,23 +52,22 @@ BEGIN {
     roomEmpty = "[  ]";
     alarm = 1;
     temp = 0;
-
     for (i = 0; i < 10; i++) {
         home[i] = roomEmpty;
     }
 }
 
-/^stat$/ {  printStat(home); next}
+/^stat$/ {printStat(home); next}
 
 /^alarm on$/ {
-    if (alarm) {
-        if (searchWindowOpen() == -1) {
-            if (searcCoolerOn() == -1) {
+    if (!alarm) {
+        if ((searchWindowOpen()) == -1) {
+            if (searchCoolerOn() == -1) {
                 alarm = 1;
                 print "success: alarm enabled";
                 next;
             } else {
-                print "alarm error: cooler " searcCoolerOn() " enabled";
+                print "alarm error: cooler " searchCoolerOn() " enabled";
                 next; 
             }
         } else {
@@ -92,7 +91,7 @@ BEGIN {
     }
 }
 
-/^window [0-9]+ open$/ {
+/^window -?[0-9]+ open$/ {
     if (chekNumBetweenRoom($2)) {
         if (!alarm) {
             if (!isCoolerOn($2)) {
@@ -118,18 +117,23 @@ BEGIN {
     }
 }
 
-/^window [0-9]+ close$/ {
-    if (isOpenWindow($2)) {
-        home[$2] = roomEmpty;
-        print "success: window " $2 " closed";
-        next;                 
+/^window -?[0-9]+ close$/ {
+    if (chekNumBetweenRoom($2)) {
+        if (isOpenWindow($2)) {
+            home[$2] = roomEmpty;
+            print "success: window " $2 " closed";
+            next;                 
+        } else {
+            print "window error: " $2 " already closed";
+            next;
+        }
     } else {
-        print "window error: " $2 " already closed";
+        print "window error: room must be between 0 and 9";
         next;
     }
 }
 
-/^cooler [0-9]+ [0-9]+C$/ {
+/^cooler -?[0-9]+ -?[0-9]+C$/ {
     if (chekNumBetweenRoom($2)) {
         if (chekIntervalTemp($3)) {
             if (!alarm) {
@@ -155,16 +159,21 @@ BEGIN {
     }
 }
 
-/^cooler [0-9]+ off$/ {
+/^cooler -?[0-9]+ off$/ {
     if (chekNumBetweenRoom($2)) {
         if (!alarm) {
             # нельзя выключить конд. пока откр окно
             if (!isOpenWindow($2)) {
-                home[$2] = roomEmpty;
-                print "success: cooler " $2 " disabled";
-                next;
+                if (isCoolerOn($2)) {
+                    home[$2] = roomEmpty;
+                    print "success: cooler " $2 " disabled";
+                    next;
+                } else {
+                    print "cooler error: " $2 " already off";
+                    next;
+                }
             } else {
-                print "cooler error: " $2 " already off";
+                print "cooler error: window " $2 " opened";
                 next;
             }
         } else {
@@ -179,6 +188,6 @@ BEGIN {
 
 /##*/ {print $0;next;}
 
-/.+/ {print $0; next}
+/^ *$/ {print $0; next}
 
-#// { print "error: unknow command" }
+// { print "error: unknow command" }
