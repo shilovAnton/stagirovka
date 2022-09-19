@@ -3,7 +3,7 @@ function printStat(arr) {
     for (i in arr) {
         printf "%s", arr[i];
     }
-    print " ";
+    print "";
 }
 
 function chekNumBetweenRoom(arg) {
@@ -91,7 +91,7 @@ BEGIN {
     }
 }
 
-/^window -?[0-9]+ open$/ {
+/^window [0-9]+ open$/ {
     if (chekNumBetweenRoom($2)) {
         if (!alarm) {
             if (!isCoolerOn($2)) {
@@ -133,7 +133,7 @@ BEGIN {
     }
 }
 
-/^cooler -?[0-9]+ -?[0-9]+C$/ {
+/^cooler [0-9]+ -?[0-9]+C$/ {
     if (chekNumBetweenRoom($2)) {
         if (chekIntervalTemp($3)) {
             if (!alarm) {
@@ -159,7 +159,7 @@ BEGIN {
     }
 }
 
-/^cooler -?[0-9]+ off$/ {
+/^cooler [0-9]+ off$/ {
     if (chekNumBetweenRoom($2)) {
         if (!alarm) {
             # нельзя выключить конд. пока откр окно
@@ -173,7 +173,7 @@ BEGIN {
                     next;
                 }
             } else {
-                print "cooler error: window " $2 " opened";
+                print "cooler error: " $2 " already off";
                 next;
             }
         } else {
@@ -186,8 +186,8 @@ BEGIN {
     }
 }
 
-/##*/ {print $0;next;}
+/^##*/ {print $0;next;}
 
 /^ *$/ {print $0; next}
 
-// { print "error: unknow command" }
+// { print "error: unknown command" }
