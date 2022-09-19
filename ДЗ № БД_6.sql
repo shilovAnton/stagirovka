@@ -79,7 +79,7 @@ FROM
     JOIN author      a ON ab.id_author = a."id"
 GROUP BY l.id_book, b.NAME_BOOK, b.tom
 ORDER BY "count" DESC
-FETCH NEXT 5 ROWS ONLY;
+FETCH NEXT 10 ROWS ONLY;
 
 /*5. Найти ТОП 5 самых читающих пользователей (за заданный период)*/
 SELECT
