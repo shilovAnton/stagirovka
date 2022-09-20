@@ -1,3 +1,4 @@
+/*------------добавление вторичных ключей---------------*/
 ALTER TABLE library_card
 ADD CONSTRAINT id_reader_rating_fk
     FOREIGN KEY (id_reader_rating)
@@ -11,6 +12,16 @@ ADD CONSTRAINT id_role_fk
 ALTER TABLE library_card
 ADD CONSTRAINT readers_lastname_unic
     UNIQUE (readers_lastname);
+/*-------Добавление ключей "inventory_number"---------*/
+ALTER TABLE inventory_number
+ADD CONSTRAINT inventory_number_pk
+    PRIMARY KEY ("id");
+
+ALTER TABLE inventory_number
+ADD CONSTRAINT id_book_in_fk
+    FOREIGN KEY (id_book)
+    REFERENCES books("id"); 
+ 
 /*-----------------------------------------------*/
 ALTER TABLE genre_book
 ADD CONSTRAINT id_book_fk
@@ -36,12 +47,12 @@ ALTER TABLE books
 ADD CONSTRAINT id_publishing_house_fk
     FOREIGN KEY (id_publishing_house)
     REFERENCES publishing_house("id");
-/*------------------------------------------*/
-CREATE SEQUENCE books_sequence
-START WITH 33
+/*---------добавление последовательности------------*/
+CREATE SEQUENCE books_seq
+START WITH 34
 INCREMENT BY 1;
 
-/*------------------------------------------*/
+/*----------------------вьюха------------------------*/
 CREATE VIEW top_10_books AS
 SELECT
     b.tom,
@@ -57,7 +68,7 @@ FROM
 GROUP BY l.id_book, b.NAME_BOOK, b.tom
 ORDER BY "count" DESC
 FETCH NEXT 10 ROWS ONLY;
-/*------------------------------------------*/
+/*----------------------вьюха------------------------*/
 CREATE VIEW top_10_readers AS  
 SELECT
     c.readers_lastname,
@@ -70,7 +81,7 @@ WHERE l.date_of_issue_book BETWEEN '01.01.1986' and '01.01.2022'
 GROUP BY l.id_libray_card, c.readers_lastname, c.readers_firstname
 ORDER BY cnt DESC
 FETCH NEXT 10 ROWS ONLY;  
-/*-----------------------------------------*/ 
+/*----------------------вьюха------------------------*/ 
 CREATE VIEW all_books_for_delivery AS
 SELECT
     b.name_book,
@@ -93,10 +104,74 @@ FROM
     JOIN tags_book        tb ON b."id" = tb.id_book
     JOIN tags             t ON tb.id_tag = t."id"
 WHERE
-    b.amount >= 1;  
-/*------------------------------------------------*/
-create index index_name_books on
-top_10_books(name_book, id_book);
+    b.amount >= 1;
+/*-----------------создание индексов--------------------*/
+create index index_is_log
+on issuance_log(date_of_issue_book);
+
+create index index_book 
+on books(name_book, year_of_publishing);
+
+create index index_author 
+on author(author_lastname);
+
+create index index_genres 
+on genres(genre);
+
+create index index_age_limit 
+on age_limit(age_limit);
+
+create index index_ph 
+on publishing_house(publishing_house);
+
+create index index_tags 
+on tags(tag);
+
+/*------------запросы на основе вьюшек-------------*/
+SELECT
+    tom,
+    NAME_BOOK,
+    "count",
+    id_book,
+    author
+FROM
+    top_10_books
+ORDER BY "count" DESC
+FETCH NEXT 5 ROWS ONLY;
+
+SELECT
+    readers_lastname,
+    readers_firstname,
+    cnt
+FROM
+    top_10_readers
+ORDER BY cnt DESC
+FETCH FIRST 5 ROWS ONLY;
+
+SELECT
+    name_book,
+    genre,
+    age_limit,
+    author_lastname,
+    author_firstname,
+    author_patronymic,
+    publishing_house,
+    year_of_publishing,
+    tag
+FROM
+    all_books_for_delivery;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     

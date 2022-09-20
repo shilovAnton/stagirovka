@@ -69,7 +69,10 @@ INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, I
     VALUES (32, 'Комсомольская правда', 1, 2, 50, 3, 6, 2018);
     
 INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-    VALUES (books_sequence.nextval, 'Аргументы и факты', 1, 2, 50, 3, 6, 2017);
+    VALUES (33, 'Аргументы и факты', 1, 2, 50, 3, 6, 2017);
+    
+/*INSERT INTO BOOKS ("id", NAME_BOOK, AMOUNT, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
+    VALUES (books_sequence.nextval, 'Аргументы и факты', 1, 2, 50, 3, 6, 2017);*/
     
     
 /*заполняем AUTHOR*/
