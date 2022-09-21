@@ -9,11 +9,11 @@ SELECT
     g.genre
 FROM
          books b
-    JOIN author_book ab ON b."id" = ab.id_book
-    JOIN age_limit   al ON b.id_age_limit = al."id"
-    JOIN author      a ON ab.id_author = a."id"
-    JOIN genre_book  gb ON b."id" = gb.id_book
-    JOIN genres      g ON gb.id_genre = g."id"
+    LEFT OUTER JOIN author_book ab ON b."id" = ab.id_book
+    LEFT OUTER JOIN age_limit   al ON b.id_age_limit = al."id"
+    LEFT OUTER JOIN author      a ON ab.id_author = a."id"
+    LEFT OUTER JOIN genre_book  gb ON b."id" = gb.id_book
+    LEFT OUTER JOIN genres      g ON gb.id_genre = g."id"
 WHERE
     a.author_lastname = 'Пушкин';
 
