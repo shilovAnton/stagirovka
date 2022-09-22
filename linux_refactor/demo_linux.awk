@@ -186,7 +186,7 @@ BEGIN {
     }
 }
 
-/^##*/ {print $0;next;}
+/^( +)?##*/ {print $0;next}
 
 /^ *$/ {print $0; next}
 
