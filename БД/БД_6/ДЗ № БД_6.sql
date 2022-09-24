@@ -1,85 +1,155 @@
 /* 1. Написать запрос поиска всех книг заданного автора (вывести
 наименование книг, жанра, возрастное ограничение и ФИО автора)*/
-SELECT
+SELECT 
     b.name_book,
-    a.author_lastname,
-    a.author_firstname,
-    a.author_patronymic,
-    al.age_limit,
-    g.genre
+    b.tom,
+    LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||' '|| a.author_patronymic), ', ') AS author,
+    LISTAGG(DISTINCT g.genre, ', ') AS genre,    
+    p.publishing_house,
+    age_limit
 FROM
          books b
     LEFT OUTER JOIN author_book ab ON b."id" = ab.id_book
-    LEFT OUTER JOIN age_limit   al ON b.id_age_limit = al."id"
     LEFT OUTER JOIN author      a ON ab.id_author = a."id"
+    LEFT OUTER JOIN age_limit   al ON b.id_age_limit = al."id"
     LEFT OUTER JOIN genre_book  gb ON b."id" = gb.id_book
     LEFT OUTER JOIN genres      g ON gb.id_genre = g."id"
-WHERE
-    a.author_lastname = 'Пушкин';
+    LEFT OUTER JOIN publishing_house   p ON b.id_publishing_house = p."id"
+GROUP BY b.name_book,  b.tom, al.age_limit, p.publishing_house
+HAVING LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||' '|| a.author_patronymic), ', ') LIKE '%Толстой%';
 
 /* 2. Написать запрос поиска всех книг изданных определенным издательством 
 (позже/ранее заданной даты - вывести наименование книг, жанра, возрастное ограничение,
  ФИО автора и издательство)*/
 SELECT
     b.name_book,
-    g.genre,
-    ag.age_limit,
-    a.author_lastname,
-    a.author_firstname,
-    a.author_patronymic,
-    ph.publishing_house,
+    b.tom,
+    LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||' '|| a.author_patronymic), ', ') AS author,
+    LISTAGG(DISTINCT g.genre, ', ') AS genre,    
+    p.publishing_house,
     b.year_of_publishing,
-    ag.age_limit
+    age_limit
 FROM
          books b
-    JOIN author_book      ab ON b."id" = ab.id_book
-    JOIN author           a ON ab.id_author = a."id"
-    JOIN genre_book       gb ON b."id" = gb.id_book
-    JOIN genres           g ON gb.id_genre = g."id"
-    JOIN age_limit        ag ON b.id_age_limit = ag."id"
-    JOIN publishing_house ph ON b.id_publishing_house = ph."id"
-WHERE
-    b.year_of_publishing < 1990;
+    LEFT OUTER JOIN author_book ab ON b."id" = ab.id_book
+    LEFT OUTER JOIN author      a ON ab.id_author = a."id"
+    LEFT OUTER JOIN age_limit   al ON b.id_age_limit = al."id"
+    LEFT OUTER JOIN genre_book  gb ON b."id" = gb.id_book
+    LEFT OUTER JOIN genres      g ON gb.id_genre = g."id"
+    LEFT OUTER JOIN publishing_house   p ON b.id_publishing_house = p."id"
+GROUP BY b.name_book,  b.tom, al.age_limit, p.publishing_house, b.year_of_publishing
+HAVING b.year_of_publishing < 1990;
     
 /*3. Найти книги по заданным критериям (по жанру, по тегам, по автору, по ограничению)*/
 SELECT
     b.name_book,
-    g.genre,
-    ag.age_limit,
-    a.author_lastname,
-    a.author_firstname,
-    a.author_patronymic,
+    b.tom,
+    LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||' '|| a.author_patronymic), ', ') AS author,
+    LISTAGG(DISTINCT g.genre, ', ') AS genre,
     ph.publishing_house,
-    b.year_of_publishing,
-    t.tag
+    ag.age_limit,
+    LISTAGG(DISTINCT t.tag, ', ') AS tag
 FROM
          books b
-    JOIN author_book      ab ON b."id" = ab.id_book
-    JOIN author           a ON ab.id_author = a."id"
-    JOIN genre_book       gb ON b."id" = gb.id_book
-    JOIN genres           g ON gb.id_genre = g."id"
-    JOIN age_limit        ag ON b.id_age_limit = ag."id"
-    JOIN publishing_house ph ON b.id_publishing_house = ph."id"
-    JOIN tags_book        tb ON b."id" = tb.id_book
-    JOIN tags             t ON tb.id_tag = t."id"
-WHERE
-    t.tag = '1812';
+    LEFT OUTER JOIN author_book      ab ON b."id" = ab.id_book
+    LEFT OUTER JOIN author           a ON ab.id_author = a."id"
+    LEFT OUTER JOIN genre_book       gb ON b."id" = gb.id_book
+    LEFT OUTER JOIN genres           g ON gb.id_genre = g."id"
+    LEFT OUTER JOIN age_limit        ag ON b.id_age_limit = ag."id"
+    LEFT OUTER JOIN publishing_house ph ON b.id_publishing_house = ph."id"
+    LEFT OUTER JOIN tags_book        tb ON b."id" = tb.id_book
+    LEFT OUTER JOIN tags             t ON tb.id_tag = t."id"
+GROUP BY b.name_book,  b.tom, ag.age_limit, ph.publishing_house
+HAVING LISTAGG(DISTINCT t.tag, ', ') LIKE '%1812%';
+
+
+SELECT
+    b.name_book,
+    b.tom,
+    LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||' '|| a.author_patronymic), ', ') AS author,
+    LISTAGG(DISTINCT g.genre, ', ') AS genre,
+    ph.publishing_house,
+    ag.age_limit,
+    LISTAGG(DISTINCT t.tag, ', ') AS tag
+FROM
+         books b
+    LEFT OUTER JOIN author_book      ab ON b."id" = ab.id_book
+    LEFT OUTER JOIN author           a ON ab.id_author = a."id"
+    LEFT OUTER JOIN genre_book       gb ON b."id" = gb.id_book
+    LEFT OUTER JOIN genres           g ON gb.id_genre = g."id"
+    LEFT OUTER JOIN age_limit        ag ON b.id_age_limit = ag."id"
+    LEFT OUTER JOIN publishing_house ph ON b.id_publishing_house = ph."id"
+    LEFT OUTER JOIN tags_book        tb ON b."id" = tb.id_book
+    LEFT OUTER JOIN tags             t ON tb.id_tag = t."id"
+GROUP BY b.name_book,  b.tom, ag.age_limit, ph.publishing_house
+HAVING LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||' '|| a.author_patronymic), ', ') LIKE '%Пушкин%';
+    
+
+SELECT
+    b.name_book,
+    b.tom,
+    LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||' '|| a.author_patronymic), ', ') AS author,
+    LISTAGG(DISTINCT g.genre, ', ') AS genre,
+    ph.publishing_house,
+    ag.age_limit,
+    LISTAGG(DISTINCT t.tag, ', ') AS tag
+FROM
+         books b
+    LEFT OUTER JOIN author_book      ab ON b."id" = ab.id_book
+    LEFT OUTER JOIN author           a ON ab.id_author = a."id"
+    LEFT OUTER JOIN genre_book       gb ON b."id" = gb.id_book
+    LEFT OUTER JOIN genres           g ON gb.id_genre = g."id"
+    LEFT OUTER JOIN age_limit        ag ON b.id_age_limit = ag."id"
+    LEFT OUTER JOIN publishing_house ph ON b.id_publishing_house = ph."id"
+    LEFT OUTER JOIN tags_book        tb ON b."id" = tb.id_book
+    LEFT OUTER JOIN tags             t ON tb.id_tag = t."id"
+GROUP BY b.name_book,  b.tom, ag.age_limit, ph.publishing_house
+HAVING age_limit >= 0;   
     
 /*4. Найти ТОП 5 самых популярных книг (по кол-ву выдачи)*/
 SELECT
-    b.tom,
-    b.NAME_BOOK,
-    l.id_book,
-    COUNT(l.id_book) AS "count",
-    LISTAGG(DISTINCT a.author_lastname, ', ') AS author
+    *
 FROM
-         issuance_log l
-    JOIN books      b ON b."id" = l.id_book
-    JOIN author_book ab ON l.id_book = ab.id_book
-    JOIN author      a ON ab.id_author = a."id"
-GROUP BY l.id_book, b.NAME_BOOK, b.tom
-ORDER BY "count" DESC
-FETCH NEXT 10 ROWS ONLY;
+(
+    SELECT
+        DENSE_RANK() OVER (ORDER BY (COUNT(id_book)) DESC) AS rank,
+        COUNT(id_book) as cnt,
+        name_book,
+        tom,
+        age_limit,
+        publishing_house,
+        author,
+        genre,
+        tag
+    FROM
+    (
+        SELECT
+            l."id",
+            l.id_book,
+            b.name_book,
+            b.tom,
+            LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||' '|| a.author_patronymic), ', ') AS author,
+            LISTAGG(DISTINCT g.genre, ', ') AS genre,
+            ph.publishing_house,
+            ag.age_limit,
+            LISTAGG(DISTINCT t.tag, ', ') AS tag
+        FROM
+                 issuance_log l
+            LEFT OUTER JOIN books b             ON b."id" = l.id_book
+            LEFT OUTER JOIN author_book ab      ON b."id" = ab.id_book
+            LEFT OUTER JOIN author a        ON ab.id_author = a."id"
+            LEFT OUTER JOIN genre_book gb       ON b."id" = gb.id_book
+            LEFT OUTER JOIN genres g            ON gb.id_genre = g."id"
+            LEFT OUTER JOIN age_limit ag        ON b.id_age_limit = ag."id"
+            LEFT OUTER JOIN publishing_house ph ON b.id_publishing_house = ph."id"
+            LEFT OUTER JOIN tags_book tb        ON b."id" = tb.id_book
+            LEFT OUTER JOIN tags t              ON tb.id_tag = t."id"
+        GROUP BY b.name_book,  b.tom, ag.age_limit, ph.publishing_house, l.id_book, l."id"
+    )
+    GROUP BY name_book,  tom, age_limit, publishing_house, author, genre, tag
+    ORDER BY cnt DESC
+)
+WHERE RANK < 6;
 
 /*5. Найти ТОП 5 самых читающих пользователей (за заданный период)*/
 SELECT
@@ -88,7 +158,7 @@ SELECT
     COUNT(l.id_libray_card) AS cnt
 FROM
         issuance_log l
-    JOIN library_card c ON l.id_libray_card = c."id"
+    LEFT OUTER JOIN library_card c ON l.id_libray_card = c."id"
 WHERE l.date_of_issue_book BETWEEN '01.01.1986' and '01.01.2022'
 GROUP BY l.id_libray_card, c.readers_lastname, c.readers_firstname
 ORDER BY cnt DESC
@@ -123,8 +193,8 @@ SELECT
     as cnt_day
 FROM
     issuance_log l
-JOIN library_card c ON l.id_libray_card = c."id"
-JOIN books b ON l.id_book = b."id"
+LEFT OUTER JOIN library_card c ON l.id_libray_card = c."id"
+LEFT OUTER JOIN books b ON l.id_book = b."id"
 WHERE 
    l.fact_date_book is null and CURRENT_DATE - l.delivery_date_book > 0;
     
@@ -134,7 +204,7 @@ SELECT
     c.readers_firstname
 FROM
     issuance_log l
-JOIN library_card c ON l.id_libray_card = c."id"
+LEFT OUTER JOIN library_card c ON l.id_libray_card = c."id"
 WHERE 
    l.fact_date_book is null and CURRENT_DATE - l.delivery_date_book > 0
    or c.id_reader_rating < 2;
