@@ -1,25 +1,12 @@
 #!/bin/bash
-for var in $(ls ./test)
+for file in ./test/*
 do
-    if $var = 0
+    if $file = 0
     then
-    echo "SUCCESS"
+    echo "$file SUCCESS"
     else
-    echo "FAIL"
+    echo "$file FAIL"
     fi
 done
 
-# if test/tester2.sh = 0
-# then
-# echo "Tester 2 SUCCESS"
-# else
-# echo "Tester 2 FAIL"
-# fi
-
-# if test/tester3.sh = 0
-# then
-# echo "Tester 3 SUCCESS"
-# else
-# echo "Tester 3 FAIL"
-# fi
-# exit 0
+exit 0
