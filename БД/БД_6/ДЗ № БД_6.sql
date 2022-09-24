@@ -112,7 +112,7 @@ SELECT
 FROM
 (
     SELECT
-        DENSE_RANK() OVER (ORDER BY (COUNT(id_book)) DESC) AS rank,
+        DENSE_RANK() OVER (ORDER BY (COUNT(id_book)) DESC) AS "rank",
         COUNT(id_book) as cnt,
         name_book,
         tom,
@@ -147,32 +147,69 @@ FROM
         GROUP BY b.name_book,  b.tom, ag.age_limit, ph.publishing_house, l.id_book, l."id"
     )
     GROUP BY name_book,  tom, age_limit, publishing_house, author, genre, tag
-    ORDER BY cnt DESC
 )
-WHERE RANK < 6;
+WHERE "rank" <= 5;
 
 /*5. Найти ТОП 5 самых читающих пользователей (за заданный период)*/
 SELECT
-    c.readers_lastname,
-    c.readers_firstname,
-    COUNT(l.id_libray_card) AS cnt
+    * 
 FROM
-        issuance_log l
-    LEFT OUTER JOIN library_card c ON l.id_libray_card = c."id"
-WHERE l.date_of_issue_book BETWEEN '01.01.1986' and '01.01.2022'
-GROUP BY l.id_libray_card, c.readers_lastname, c.readers_firstname
-ORDER BY cnt DESC
-FETCH NEXT 5 ROWS ONLY;
+(
+    SELECT
+        DENSE_RANK() OVER (ORDER BY (COUNT(l.id_libray_card)) DESC) AS "rank",
+        COUNT(l.id_libray_card) AS cnt,
+        LISTAGG(DISTINCT (r.readers_lastname||' '||r.readers_firstname||' '||r.readers_patronymic), ', ') AS readers
+        
+    FROM
+            issuance_log l
+        LEFT OUTER JOIN library_card r ON l.id_libray_card = r."id"
+    WHERE l.date_of_issue_book BETWEEN '01.01.1956' and '01.01.2023'
+    GROUP BY l.id_libray_card
+)
+WHERE "rank" <= 5;
 
 /*6. Найти список книг которые не могут быть выданы читателю домой*/
 SELECT
-    b."id",
-    b.name_book
+    * 
 FROM
-        books b
-    WHERE 
-        b.amount = 1 or b.id_book_type > 1;
-    
+    (
+    SELECT
+        COUNT(i.id_book) as amount,
+        bt.book_type,
+        b.name_book,
+        b.tom,
+        LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||' '|| a.author_patronymic), ', ') AS author,
+        LISTAGG(DISTINCT g.genre, ', ') AS genre,
+        ag.age_limit
+    FROM
+            inventory_number i
+        LEFT OUTER JOIN books b             ON i.id_book = b."id"
+        LEFT OUTER JOIN author_book ab      ON b."id" = ab.id_book
+        LEFT OUTER JOIN author a            ON ab.id_author = a."id"
+        LEFT OUTER JOIN genre_book gb       ON b."id" = gb.id_book
+        LEFT OUTER JOIN genres g            ON gb.id_genre = g."id"
+        LEFT OUTER JOIN age_limit ag        ON b.id_age_limit = ag."id"
+        LEFT OUTER JOIN publishing_house ph ON b.id_publishing_house = ph."id"
+        LEFT OUTER JOIN book_type bt        ON bt."id" = b.id_book_type
+    GROUP BY i.id_book, b.name_book, b.tom, ag.age_limit, bt.book_type
+    )
+WHERE   amount > 1 and
+        book_type = 'Книга' and
+        age_limit < (--подзапрос для расчета возраста читателя
+                    SELECT 
+                        (SYSDATE  - lc.date_of_birth)/365
+                    FROM
+                    library_card lc
+                    WHERE lc."id" = 2
+                    ) and
+        ( --подзапрос для выеснения рейтинга читателя
+        SELECT 
+            reader_rating
+        FROM
+            library_card lc
+        LEFT OUTER JOIN reader_rating rr ON rr."id" = lc.id_reader_rating
+        WHERE lc."id" = 2
+        ) > 2;
 /*7. Запрос который покажет может ли читатель почитать/получить желаемую книгу*/  
 SELECT
     b."id",

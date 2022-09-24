@@ -1,5 +1,5 @@
 create user ANTON
-  identified by "T123456789"
+  identified by "1234"
   default tablespace USERS
   temporary tablespace TEMP
   profile DEFAULT;

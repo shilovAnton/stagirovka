@@ -108,7 +108,6 @@ CREATE TABLE books
 "id"                        NUMBER              PRIMARY KEY,
 name_book                   VARCHAR2(100 CHAR)  NOT NULL,
 tom                         NUMBER,
-amount/*количество*/        NUMBER,
 id_book_type                NUMBER,
 id_age_limit                NUMBER,
 id_publishing_house         NUMBER,
