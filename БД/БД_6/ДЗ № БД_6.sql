@@ -210,6 +210,7 @@ WHERE   amount > 1 and
         LEFT OUTER JOIN reader_rating rr ON rr."id" = lc.id_reader_rating
         WHERE lc."id" = 2
         ) > 2;
+        
 /*7. Запрос который покажет может ли читатель почитать/получить желаемую книгу*/  
 SELECT
     b."id",
