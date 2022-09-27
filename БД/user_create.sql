@@ -27,6 +27,9 @@ grant drop any trigger to ANTON;
 grant drop any view to ANTON;
 grant drop profile to ANTON;
 
+-- дополненние прав
+
+
 grant select on sys.v_$session to ANTON;
 grant select on sys.v_$sesstat to ANTON;
 grant select on sys.v_$statname to ANTON;

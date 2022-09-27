@@ -164,11 +164,11 @@ INCREMENT BY 1;
 
 CREATE TABLE genre_book /*переходная таблица*/
 (
-    "id"                        NUMBER          PRIMARY KEY,
-    id_book                     NUMBER          NOT NULL
+    "id"                        NUMBER              PRIMARY KEY,
+    id_book                     NUMBER              NOT NULL
         CONSTRAINT gb_id_book_fk     
         REFERENCES tags("id"),
-    id_genre                    NUMBER          NOT NULL
+    id_genre                    NUMBER              NOT NULL
         CONSTRAINT gb_id_genre_fk     
         REFERENCES genres("id")
 );
@@ -179,8 +179,8 @@ INCREMENT BY 1;
 
 CREATE TABLE inventory_number
 (
-    "id"                        NUMBER,
-    id_book                     NUMBER          NOT NULL
+    "id"                        NUMBER              PRIMARY KEY,
+    id_book                     NUMBER              NOT NULL
         CONSTRAINT in_id_book_fk     
         REFERENCES books("id"),
     arrival_book                DATE,/*дата прибытия на склад*/
@@ -197,7 +197,7 @@ CREATE TABLE issuance_log /*журнаал выдачи*/
     id_service_category         NUMBER
         CONSTRAINT il_service_category_fk     
         REFERENCES service_category("id"),
-    inventory_number            NUMBER
+    id_inventory_number            NUMBER
         CONSTRAINT il_inventory_number_fk     
         REFERENCES inventory_number("id"),
     id_book                     NUMBER
@@ -205,12 +205,12 @@ CREATE TABLE issuance_log /*журнаал выдачи*/
         REFERENCES books("id"),
     id_libray_card              NUMBER
         CONSTRAINT il_libray_card_fk     
-        REFERENCES libray_card("id"),
+        REFERENCES library_card("id"),
     date_of_issue_book          DATE           NOT NULL,/*дата выдачи книги*/
     delivery_date_book          DATE,   /*дата сдачи книги*/
     fact_date_book              DATE    /*фактическая дата сдачи книги*/
 );
-CREATE SEQUENCE inventory_number_seq
+CREATE SEQUENCE issuance_log_seq
 START WITH 1
 INCREMENT BY 1;
 
