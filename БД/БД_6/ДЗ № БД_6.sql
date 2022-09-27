@@ -38,7 +38,7 @@ FROM
     LEFT OUTER JOIN genres      g ON gb.id_genre = g."id"
     LEFT OUTER JOIN publishing_house   p ON b.id_publishing_house = p."id"
 GROUP BY b.name_book,  b.tom, al.age_limit, p.publishing_house, b.year_of_publishing
-HAVING b.year_of_publishing < 1990;
+HAVING b.year_of_publishing > 1990 and p.publishing_house = 'Литер';
     
 /*3. Найти книги по заданным критериям (по жанру, по тегам, по автору, по ограничению)*/
 SELECT
@@ -60,51 +60,11 @@ FROM
     LEFT OUTER JOIN tags_book        tb ON b."id" = tb.id_book
     LEFT OUTER JOIN tags             t ON tb.id_tag = t."id"
 GROUP BY b.name_book,  b.tom, ag.age_limit, ph.publishing_house
-HAVING LISTAGG(DISTINCT t.tag, ', ') LIKE '%1812%';
-
-
-SELECT
-    b.name_book,
-    b.tom,
-    LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||' '|| a.author_patronymic), ', ') AS author,
-    LISTAGG(DISTINCT g.genre, ', ') AS genre,
-    ph.publishing_house,
-    ag.age_limit,
-    LISTAGG(DISTINCT t.tag, ', ') AS tag
-FROM
-         books b
-    LEFT OUTER JOIN author_book      ab ON b."id" = ab.id_book
-    LEFT OUTER JOIN author           a ON ab.id_author = a."id"
-    LEFT OUTER JOIN genre_book       gb ON b."id" = gb.id_book
-    LEFT OUTER JOIN genres           g ON gb.id_genre = g."id"
-    LEFT OUTER JOIN age_limit        ag ON b.id_age_limit = ag."id"
-    LEFT OUTER JOIN publishing_house ph ON b.id_publishing_house = ph."id"
-    LEFT OUTER JOIN tags_book        tb ON b."id" = tb.id_book
-    LEFT OUTER JOIN tags             t ON tb.id_tag = t."id"
-GROUP BY b.name_book,  b.tom, ag.age_limit, ph.publishing_house
-HAVING LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||' '|| a.author_patronymic), ', ') LIKE '%Пушкин%';
-    
-
-SELECT
-    b.name_book,
-    b.tom,
-    LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||' '|| a.author_patronymic), ', ') AS author,
-    LISTAGG(DISTINCT g.genre, ', ') AS genre,
-    ph.publishing_house,
-    ag.age_limit,
-    LISTAGG(DISTINCT t.tag, ', ') AS tag
-FROM
-         books b
-    LEFT OUTER JOIN author_book      ab ON b."id" = ab.id_book
-    LEFT OUTER JOIN author           a ON ab.id_author = a."id"
-    LEFT OUTER JOIN genre_book       gb ON b."id" = gb.id_book
-    LEFT OUTER JOIN genres           g ON gb.id_genre = g."id"
-    LEFT OUTER JOIN age_limit        ag ON b.id_age_limit = ag."id"
-    LEFT OUTER JOIN publishing_house ph ON b.id_publishing_house = ph."id"
-    LEFT OUTER JOIN tags_book        tb ON b."id" = tb.id_book
-    LEFT OUTER JOIN tags             t ON tb.id_tag = t."id"
-GROUP BY b.name_book,  b.tom, ag.age_limit, ph.publishing_house
-HAVING age_limit >= 0;   
+HAVING 
+    LISTAGG(DISTINCT t.tag, ', ') LIKE '%Россия%' 
+    and LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||
+    ' '|| a.author_patronymic), ', ') LIKE '%Толстой%' 
+    and age_limit >= 0;  
     
 /*4. Найти ТОП 5 самых популярных книг (по кол-ву выдачи)*/
 SELECT
@@ -112,7 +72,7 @@ SELECT
 FROM
 (
     SELECT
-        DENSE_RANK() OVER (ORDER BY (COUNT(id_book)) DESC) AS "rank",
+        RANK() OVER (ORDER BY (COUNT(id_book)) DESC) AS "rank",
         COUNT(id_book) as cnt,
         name_book,
         tom,
@@ -156,7 +116,7 @@ SELECT
 FROM
     (
     SELECT
-        DENSE_RANK() OVER (ORDER BY (COUNT(l.id_libray_card)) DESC) AS "rank",
+        RANK() OVER (ORDER BY (COUNT(l.id_libray_card)) DESC) AS "rank",
         COUNT(l.id_libray_card) AS cnt,
         LISTAGG(DISTINCT (r.readers_lastname||' '||r.readers_firstname||' '||r.readers_patronymic), ', ') AS readers
     FROM
@@ -279,7 +239,9 @@ FROM
 GROUP BY b.name_book,  b.tom, ph.publishing_house, l.id_book, l."id",
     ROUND(SYSDATE - l.delivery_date_book), l.fact_date_book, l.delivery_date_book,
     c.readers_lastname||' '||c.readers_firstname||' '||c.readers_patronymic
-HAVING l.fact_date_book is null and SYSDATE - l.delivery_date_book > 0
+HAVING 
+    l.fact_date_book is null 
+    and SYSDATE - l.delivery_date_book > 0
 ORDER BY cnt_day DESC;
 
 /*9. Вывести список неблагонадежных читателей*/
@@ -324,10 +286,21 @@ WHERE t."id" in (
                     t."id"
                 FROM
                     books b
-                    JOIN tags_book        tb ON b."id" = tb.id_book
-                    JOIN tags             t ON tb.id_tag = t."id"
+                    JOIN tags_book tb   ON b."id" = tb.id_book
+                    JOIN tags t         ON tb.id_tag = t."id"
                 WHERE
                     b.name_book = 'Война и мир'
                     GROUP BY b.name_book, t."id"
                 )
+    and g."id" in   (
+                    SELECT 
+                        g."id"
+                    FROM
+                        books b
+                    LEFT OUTER JOIN genre_book  gb      ON b."id" = gb.id_book
+                    LEFT OUTER JOIN genres g            ON gb.id_genre = g."id"
+                    WHERE
+                        b.name_book = 'Война и мир'
+                        GROUP BY b.name_book, g."id"
+                    )
 GROUP BY b."id", b.name_book, b.tom, p.publishing_house, age_limit;
