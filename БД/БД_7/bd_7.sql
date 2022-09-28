@@ -35,7 +35,7 @@ CREATE TABLE library_card /*читательский билет*/
         REFERENCES roles("id"),
     age_readers                 NUMBER
 );
-CREATE SEQUENCE library_cardg_seq
+CREATE SEQUENCE library_card_seq
 START WITH 1
 INCREMENT BY 1;
 
@@ -167,7 +167,7 @@ CREATE TABLE genre_book /*переходная таблица*/
     "id"                        NUMBER              PRIMARY KEY,
     id_book                     NUMBER              NOT NULL
         CONSTRAINT gb_id_book_fk     
-        REFERENCES tags("id"),
+        REFERENCES books("id"),
     id_genre                    NUMBER              NOT NULL
         CONSTRAINT gb_id_genre_fk     
         REFERENCES genres("id")
@@ -214,12 +214,15 @@ CREATE SEQUENCE issuance_log_seq
 START WITH 1
 INCREMENT BY 1;
 
+---------------------- Индексирование-----------------------
+create index index_is_log
+on issuance_log(date_of_issue_book);
 
+create index index_book 
+on books(name_book, year_of_publishing);
 
-
-
-
-
+create index index_author 
+on author(author_lastname);
 
 
 

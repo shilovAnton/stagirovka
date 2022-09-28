@@ -8,7 +8,7 @@ FROM
 (
     SELECT
         id_book,
-        DENSE_RANK() OVER (ORDER BY (COUNT(id_book)) DESC) AS "rank",
+        RANK() OVER (ORDER BY (COUNT(id_book)) DESC) AS "rank",
         COUNT(id_book) as cnt,
         name_book,
         tom,
@@ -57,7 +57,7 @@ FROM
     (
     SELECT
         l.id_libray_card as "id reader",
-        DENSE_RANK() OVER (ORDER BY (COUNT(l.id_libray_card)) DESC) AS "rank",
+        RANK() OVER (ORDER BY (COUNT(l.id_libray_card)) DESC) AS "rank",
         COUNT(l.id_libray_card) AS cnt,
         LISTAGG(DISTINCT (r.readers_lastname||' '||r.readers_firstname||' '||r.readers_patronymic), ', ') AS readers
     FROM
