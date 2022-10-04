@@ -110,8 +110,8 @@ CREATE TABLE author (
     "id"              NUMBER
         GENERATED AS IDENTITY,
     author_lastname   VARCHAR2(60 CHAR) NOT NULL,
-    author_firstname  VARCHAR2(60 CHAR),
-    author_patronymic VARCHAR2(60 CHAR),
+    author_firstname  VARCHAR2(60 CHAR) DEFAULT 'Иван',
+    author_patronymic VARCHAR2(60 CHAR) DEFAULT 'Иванович',
     CONSTRAINT author PRIMARY KEY ( "id" )
 );
 
