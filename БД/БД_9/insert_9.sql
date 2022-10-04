@@ -1286,9 +1286,6 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 
-
-
-
 /*заполняем LIBRARY_CARD*/
 INSERT INTO LIBRARY_CARD (READERS_FIRSTNAME, READERS_LASTNAME, SUM_FINES, ID_ROLE, DATE_OF_BIRTH, DATE_OF_ISSUE_CARD, ID_READER_RATING) 
     VALUES ('Антон', 'Шилов', 0, 1, TO_DATE('2020/07/10', 'yyyy/mm/dd'), TO_DATE('2019/07/22', 'yyyy/mm/dd'), 5);
