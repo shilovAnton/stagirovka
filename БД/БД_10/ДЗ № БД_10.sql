@@ -16,7 +16,7 @@ BEGIN
 -- ) VALUE (V_ROLE)
    
 SELECT
- *
+ --INTO v_id_role
 FROM BOOKS
 WHERE
      EXISTS (SELECT r."id" INTO v_role FROM roles r WHERE r."role" = v_role);
