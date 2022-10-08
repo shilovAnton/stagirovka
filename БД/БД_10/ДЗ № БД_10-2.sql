@@ -206,7 +206,6 @@ BEGIN
         INSERT INTO inventory_number ( id_book ) VALUES ( v_id_book );
     
     END LOOP;
-    dbms_output.put_line (v_id_authors.count);
 -------------------------------------------------------
     --заполняем переходную автора
     FOR i IN 1..v_id_authors.count LOOP
@@ -214,27 +213,19 @@ BEGIN
 
     END LOOP;
 -----------------------------------------------------
---заполняем переходную жанра
+    --заполняем переходную жанра
     FOR i IN 1..v_id_genres.last LOOP
         INSERT INTO genre_book ( id_book, id_genre ) VALUES ( v_id_book, v_id_genres(i) );
 
     END LOOP;
 -------------------------------------------------------
---заполняем переходную тега
+    --заполняем переходную тега
     FOR i IN 1..v_id_tags.last LOOP
         INSERT INTO tags_book ( id_book, id_tag ) VALUES ( v_id_book, v_id_tags(i) );
 
     END LOOP;
 -------------------------------------------------------
     COMMIT;
+
+    dbms_output.put_line ('Книга "'||v_name_book||'" добавлена в базу!');
 END;
-
-
-
-
-
-
-
-
-
-
