@@ -43,7 +43,7 @@ CREATE TABLE library_card (
     readers_patronymic VARCHAR2(60 CHAR),
     date_of_birth      DATE NOT NULL,/*дата рождения*/
     date_of_issue_card DATE,/*дата выдачи билета*/
-    sum_fines          NUMBER,/*штрафы*/
+    sum_fines          NUMBER       DEFAULT 0,/*штрафы*/
     id_reader_rating   NUMBER,
     CONSTRAINT lc_id_reader_rating_fk FOREIGN KEY ( id_reader_rating )
         REFERENCES reader_rating ( "id" ),
@@ -368,7 +368,7 @@ CREATE TABLE inventory_number (
         CONSTRAINT in_id_book_fk
             REFERENCES books ( "id" ),
     /*дата прибытия на склад*/
-    arrival_book        DATE,
+    arrival_book        DATE DEFAULT SYSDATE,
     /*дата списания книги*/
     write_off_date_book DATE,
     CONSTRAINT inventory_number PRIMARY KEY ( "id" )

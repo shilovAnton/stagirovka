@@ -36,3 +36,6 @@ grant select on sys.v_$statname to ANTON;
 grant SELECT ANY DICTIONARY to ANTON;
 
 GRANT UNLIMITED TABLESPACE TO ANTON;
+
+--для vs, чтобы не ругалась на дату
+ALTER SESSION SET NLS_DATE_FORMAT = 'DD.MM.YYYY';
