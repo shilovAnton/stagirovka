@@ -1,5 +1,5 @@
 DECLARE
-/*Создаем метод, возвращающий таблицу выданных книг за определенный день*/
+/*Создаем метод, возвращающий таблицу вернувшихся книг за определенный день*/
 
 v_parametr_date DATE := to_date('10-OCT-22', 'DD-MON-YY');
 
@@ -18,7 +18,7 @@ OPEN rc FOR
         ph.publishing_house,
         ag.age_limit,
         LISTAGG(DISTINCT t.tag, ', ') AS tag,
-        l.DATE_OF_ISSUE_BOOK
+        l.FACT_DATE_BOOK
     FROM
                 issuance_log l
         LEFT OUTER JOIN books b             ON b."id" = l.id_book
@@ -31,9 +31,9 @@ OPEN rc FOR
         LEFT OUTER JOIN tags_book tb        ON b."id" = tb.id_book
         LEFT OUTER JOIN tags t              ON tb.id_tag = t."id"
     WHERE
-        to_date(l.DATE_OF_ISSUE_BOOK, 'DD-MON-YY') = v_parametr_date
+        to_date(l.FACT_DATE_BOOK, 'DD-MON-YY') = v_parametr_date
     GROUP BY
-        b.name_book,  b.tom, ag.age_limit, ph.publishing_house, l.id_book, l."id", l.DATE_OF_ISSUE_BOOK;
+        b.name_book,  b.tom, ag.age_limit, ph.publishing_house, l.id_book, l."id", l.FACT_DATE_BOOK;
         
    dbms_sql.return_result(rc);  
 end;

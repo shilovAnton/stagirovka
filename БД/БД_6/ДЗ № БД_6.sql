@@ -183,7 +183,7 @@ SELECT
     genre,
     age_limit || '+' as "age limit",
     lc.id_reader_rating as reader_rating,
-    ROUND((SYSDATE  - lc.date_of_birth)/365) as age_readers
+    ROUND((SYSDATE - lc.date_of_birth)/365) as age_readers
 FROM
     (
     SELECT
