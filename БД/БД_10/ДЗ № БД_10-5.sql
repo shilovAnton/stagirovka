@@ -1,5 +1,5 @@
 DECLARE
-/*Создаем метод по выдачи книги читателю (абонемент)*/
+/*Создаем метод по возврату книги читателем*/
 
     --вводные данные
     v_id_inventory_number NUMBER := 100;
@@ -12,8 +12,6 @@ DECLARE
     count_book_foul NUMBER := 0;
     --переменная есть ли нарушения, не соответствия у читателя
     error NUMBER := 0;
-    --переменная ограничение на абонемент
-    error_subscript NUMBER := 0;
 
     --создание курсора книги
     CURSOR cursor_book IS
@@ -68,29 +66,14 @@ DECLARE
     flag_book NUMBER := 0;
     --флаг что читатель существует
     flag_reader NUMBER := 0;
-    --флаг что сервисная категория существует
-    flag_category NUMBER := 0;
 
-    --создание курсора сервисных категорий
-    CURSOR cursor_service_category IS
-        SELECT
-            *
-        FROM
-            SERVICE_CATEGORY sc
-        WHERE
-            sc.SERVICE_CATEGORY = v_service_category;
-    --переменная для строки курсора выборки сервисной категории
-    v_row_serv_cat cursor_service_category%ROWTYPE;
-
-    v_id_serv_cat NUMBER;
+    v_issuance_log issuance_log%ROWTYPE;
 BEGIN
 -------------------------------------------------------
     OPEN cursor_reader;
     LOOP 
         FETCH cursor_reader INTO v_reader;
         EXIT WHEN cursor_reader%NOTFOUND;
-        
-
         flag_reader := 1;
         DBMS_OUTPUT.PUT_LINE('=======================================================');
         DBMS_OUTPUT.PUT_LINE('Читатель: '||v_reader.readers_lastname||' '||v_reader.readers_firstname||' '||v_reader.readers_patronymic);
@@ -121,15 +104,6 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE('Издательство: '||v_current_book.publishing_house);
         DBMS_OUTPUT.PUT_LINE('Количество: '||v_current_book.amount);
         DBMS_OUTPUT.PUT_LINE('=======================================================');
-        
-        --проверка на тип книги
-        IF v_current_book.book_type = 'Газета' and v_current_book.book_type = 'Журнал' THEN
-            DBMS_OUTPUT.PUT_LINE('Этот тип печатного издания можно выдать только в читальный зал!!!');
-            error_subscript := 1;
-        ELSIF v_current_book.amount = 1 THEN--проверка на количество книг
-            DBMS_OUTPUT.PUT_LINE('Книга в одном экземпляре, можно выдать только в читальный зал!!!');
-            error_subscript := 1;
-        END IF;
     END LOOP;   
     CLOSE cursor_book;   
     if flag_book = 0 THEN
@@ -138,36 +112,22 @@ BEGIN
     END IF;
 -------------------------------------------------------
     if flag_book = 1 and flag_reader = 1 THEN
-        --проверка на возрастное ограничение
-        IF v_reader.age_readers >= v_current_book.age_limit THEN
-            DBMS_OUTPUT.PUT_LINE('Читатель проходит по возрастному ограничению - Ok');
-        ELSE
-            DBMS_OUTPUT.PUT_LINE('Читатель НЕ проходит по возрастному ограничению - No!!!');
-            error := 1;
-        END IF;
-
-        --проверка на рейтинг
-        IF v_reader.reader_rating >= 3 THEN
-            DBMS_OUTPUT.PUT_LINE('Читатель проходит по рейтингу - Ok');
-        ELSE
-            DBMS_OUTPUT.PUT_LINE('Читатель НЕ проходит по рейтингу - No!!!');
-            error := 1;
-        END IF;
-
         --запрос на то, что эта книга уже у него наруках
         SELECT
-            COUNT(*)
+            *
         INTO
-            book_in_hand
+            v_issuance_log
         FROM
             ISSUANCE_LOG il
         WHERE
             IL.ID_BOOK = v_current_book."id" and il.ID_LIBRAY_CARD = v_reader."id"
-            and il.DATE_OF_ISSUE_BOOK IS NULL;
-        IF book_in_hand = 0 THEN
-            DBMS_OUTPUT.PUT_LINE('У читателя нет этой книг на руках - Ok');
+            and il.FACT_DATE_BOOK IS NULL
+        ORDER BY il.DATE_OF_ISSUE_BOOK DESC
+        FETCH FIRST 1 ROWS ONLY;  
+        IF v_issuance_log.fact_date_book IS NULL THEN
+            DBMS_OUTPUT.PUT_LINE('У читателя нет этой книг на руках - No!!!');
         ELSE
-            DBMS_OUTPUT.PUT_LINE('Эта книга на руках у читателя - No!!!');
+            DBMS_OUTPUT.PUT_LINE('Эта книга на руках у читателя - Ok');
             error := 1;
         END IF;
 
@@ -199,42 +159,17 @@ BEGIN
         
         --принятие решения
         DBMS_OUTPUT.PUT_LINE('=======================================================');
-        IF error = 0 and error_subscript = 0 THEN
  -------------------------------------------------------
-            --блок записи в журнал
-            OPEN cursor_service_category;
-            LOOP 
-                FETCH cursor_service_category INTO v_row_serv_cat;
-                EXIT WHEN cursor_service_category%NOTFOUND;
-                flag_category := 1;
-            END LOOP;
-            CLOSE cursor_service_category;
-            if flag_category = 0 THEN
-                INSERT INTO SERVICE_CATEGORY(SERVICE_CATEGORY) VALUES (v_service_category)RETURNING "id" INTO v_id_serv_cat;
-            ELSE
-                v_id_serv_cat := v_row_serv_cat."id";
-            END IF;
-            INSERT INTO ISSUANCE_LOG (
-                ID_SERVICE_CATEGORY,
-                ID_INVENTORY_NUMBER,
-                ID_BOOK,
-                ID_LIBRAY_CARD,
-                DATE_OF_ISSUE_BOOK,
-                DELIVERY_DATE_BOOK
-            ) VALUES (
-                v_id_serv_cat,
-                v_id_inventory_number,
-                v_current_book."id",
-                v_reader."id",
-                SYSDATE,
-                SYSDATE + 14
-            );
-            DBMS_OUTPUT.PUT_LINE('Книга выдана!');
+        --блок записи в журнал
+        UPDATE 
+            ISSUANCE_LOG
+        SET 
+            FACT_DATE_BOOK = SYSDATE()
+        WHERE 
+            ISSUANCE_LOG."id" = v_issuance_log."id";
+        DBMS_OUTPUT.PUT_LINE('Книга принята!');
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Запись не сделанна!');
+    END IF;
 -------------------------------------------------------
-        ELSIF error = 0 and error_subscript = 1 THEN
-            DBMS_OUTPUT.PUT_LINE('Книга может быть выдана только в читальный зал!!!');
-        ELSE
-            DBMS_OUTPUT.PUT_LINE('КНИГУ НЕЛЬЗЯ ВЫДАТЬ!!!');
-        END IF;
-    END IF;    
 END;
