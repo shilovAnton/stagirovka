@@ -99,7 +99,7 @@ BEGIN
 -------------------------------------------------------
     --проверка на существование и запись тегов
     FOR i IN 1..v_tags.count LOOP
-        v_id_tags.extend();
+        v_id_tags.extend;
         SELECT
             COUNT(*)
         INTO v_id_tags(i)

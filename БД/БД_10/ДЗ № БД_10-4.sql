@@ -87,6 +87,8 @@ BEGIN
     LOOP 
         FETCH cursor_reader INTO v_reader;
         EXIT WHEN cursor_reader%NOTFOUND;
+        
+
         flag_reader := 1;
         DBMS_OUTPUT.PUT_LINE('=======================================================');
         DBMS_OUTPUT.PUT_LINE('Читатель: '||v_reader.readers_lastname||' '||v_reader.readers_firstname||' '||v_reader.readers_patronymic);

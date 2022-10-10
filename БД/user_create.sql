@@ -9,6 +9,7 @@ grant unlimited tablespace to LIBRARYDB;
 /*от Миши*/
 ALTER SESSION SET "_ORACLE_SCRIPT"=true;
 create user ANTON identified by 1234;
+--T123456789 этот пароль рабочий
 
 grant create session to ANTON;
 grant create table to ANTON;
