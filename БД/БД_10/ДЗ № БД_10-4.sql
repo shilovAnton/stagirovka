@@ -236,5 +236,6 @@ BEGIN
         ELSE
             DBMS_OUTPUT.PUT_LINE('КНИГУ НЕЛЬЗЯ ВЫДАТЬ!!!');
         END IF;
-    END IF;    
+    END IF;  
+    COMMIT;  
 END;
