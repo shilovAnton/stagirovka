@@ -43,7 +43,6 @@ OPEN book FOR
     WHERE
         l.ID_INVENTORY_NUMBER = v_id_inventory_number;
 
-        
     dbms_sql.return_result(rc); 
    
 end;
