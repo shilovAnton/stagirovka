@@ -1,8 +1,8 @@
 DECLARE 
-   V_ID_BOOK           NUMBER;
+    V_ID_BOOK           NUMBER;
 
     TYPE ass_type_ch IS TABLE OF PLS_INTEGER INDEX BY VARCHAR2(60);
-    TYPE ass_type_num IS TABLE OF PLS_INTEGER INDEX BY NUMBER;
+    TYPE ass_type_num IS TABLE OF PLS_INTEGER INDEX BY PLS_INTEGER;
 
     v_roles ass_type_ch;
     v_book_type ass_type_ch;
@@ -38,7 +38,7 @@ INSERT INTO TAGS (TAG) VALUES ('Рождество') RETURNING "id" INTO v_tags(
 INSERT INTO TAGS (TAG) VALUES ('Толстой') RETURNING "id" INTO v_tags('Толстой');
 INSERT INTO TAGS (TAG) VALUES ('Пушкин') RETURNING "id" INTO v_tags('Пушкин');
     
-/*заполняем READER_RATING*/
+/*заполняем READER_RATING*/--здесь значение типа number!!! 
 INSERT INTO READER_RATING (READER_RATING) VALUES (1);
 INSERT INTO READER_RATING (READER_RATING) VALUES (2);
 INSERT INTO READER_RATING (READER_RATING) VALUES (3);
@@ -184,7 +184,7 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Братья Карамазовы', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Эксмо'), '01.01.1990') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Достоевский'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -199,7 +199,7 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Братья Карамазовы', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Эксмо'), '01.01.1990') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Достоевский'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -214,7 +214,7 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Братья Карамазовы', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Эксмо'), '01.01.1990') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Достоевский'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -229,7 +229,7 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Братья Карамазовы', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Эксмо'), '01.01.1990') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Достоевский'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -244,7 +244,7 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Братья Карамазовы', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.1990') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Достоевский'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -257,9 +257,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Тихий Дон. В 2-х томах', 1, 2, 900, 1, 2, '01.01.1995') RETURNING "id" INTO v_id_book;
+   VALUES ('Тихий Дон. В 2-х томах', 1, v_age_limit(12), 900, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.1995') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Шолохов'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -273,9 +273,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Тихий Дон. В 2-х томах', 2, 2, 1000, 1, 3, '01.01.1996') RETURNING "id" INTO v_id_book;
+   VALUES ('Тихий Дон. В 2-х томах', 2, v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.1996') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Шолохов'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -289,9 +289,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Отцы и дети', 3, 1200, 1, 4, '01.01.1997') RETURNING "id" INTO v_id_book;
+   VALUES ('Отцы и дети', v_age_limit(12), 1200, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.1997') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Тургенев'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -305,27 +305,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Герой нашего времени', 5, 1000, 1, 5, '01.01.1998') RETURNING "id" INTO v_id_book;
+   VALUES ('Герой нашего времени', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.1998') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
-INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
-INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
-
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
---------------------------------------------------------------------------------------------------------------------------
-INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Горе от ума', 3, 1000, 1, 6, '01.01.1999') RETURNING "id" INTO v_id_book;
-
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Лермонтов'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -341,7 +323,61 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Педагогическая поэма', 2, 1000, 1, 7, '01.01.2000') RETURNING "id" INTO v_id_book;
+   VALUES ('Горе от ума', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.1999') RETURNING "id" INTO v_id_book;
+
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Грибоедов'));
+INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
+INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
+
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+--------------------------------------------------------------------------------------------------------------------------
+INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
+   VALUES ('Педагогическая поэма', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2000') RETURNING "id" INTO v_id_book;
+
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Макаренко'));
+INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
+INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
+
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+--------------------------------------------------------------------------------------------------------------------------
+INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
+   VALUES ('Вишневый сад', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2001') RETURNING "id" INTO v_id_book;
+
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Гоголь'));
+INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
+INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
+
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+--------------------------------------------------------------------------------------------------------------------------
+INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
+   VALUES ('Анна Каренина', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2002') RETURNING "id" INTO v_id_book;
 
 INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
@@ -359,45 +395,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Вишневый сад', 2, 1000, 1, 8, '01.01.2001') RETURNING "id" INTO v_id_book;
+   VALUES ('Евгений Онегин', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2003') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
-INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
-INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
-
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
---------------------------------------------------------------------------------------------------------------------------
-INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Анна Каренина', 2, 1000, 1, 9, '01.01.2002') RETURNING "id" INTO v_id_book;
-
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
-INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
-INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
-
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
---------------------------------------------------------------------------------------------------------------------------
-INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Евгений Онегин', 2, 1000, 1, 8, '01.01.2003') RETURNING "id" INTO v_id_book;
-
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Пушкин'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -413,9 +413,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING)
-   VALUES ('Судьба человека', 2, 1000, 1, 7, '01.01.2004') RETURNING "id" INTO v_id_book;
+   VALUES ('Судьба человека', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2004') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Басова'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -431,9 +431,10 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Внутри что-то есть', 2, 1000, 1, 6, '01.01.2005') RETURNING "id" INTO v_id_book;
+   VALUES ('Внутри что-то есть', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2005') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Минаев'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Дашевская'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -449,9 +450,10 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Чуть правее сердца. Сборник рассказов', 2, 1000, 1, 5, '01.01.2006') RETURNING "id" INTO v_id_book;
+   VALUES ('Чуть правее сердца. Сборник рассказов', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2006') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Кравченко'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Богатырёва'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -465,9 +467,10 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Никому не рассказывай', 2, 1000, 1, 4, '01.01.2007') RETURNING "id" INTO v_id_book;
+   VALUES ('Никому не рассказывай', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2007') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Сазонова'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Ленковскаая'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -477,9 +480,10 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толсто�
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Письмо с подснежником', 2, 1000, 1, 5, '01.01.2008') RETURNING "id" INTO v_id_book;
+   VALUES ('Письмо с подснежником', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2008') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Сладков'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Машковская'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -492,9 +496,10 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Стихи, сказки и рассказы', 2, 1000, 1, 6, '01.01.2009') RETURNING "id" INTO v_id_book;
+   VALUES ('Стихи, сказки и рассказы', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2009') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Твен'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Джером'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -504,9 +509,10 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толсто�
 --книги нет на складе!!!
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Сборник лучших смешных рассказов.', 2, 1000, 1, 3, '01.01.2010') RETURNING "id" INTO v_id_book;
+   VALUES ('Сборник лучших смешных рассказов.', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2010') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Кухаркин'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Михалков'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -519,9 +525,10 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Стихи и рассказы о Родине', 2, 1000, 1, 2, '01.01.2011') RETURNING "id" INTO v_id_book;
+   VALUES ('Стихи и рассказы о Родине', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2011') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Драгунский'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Крусанов'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -534,44 +541,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Все-все-все сказки', 2, 1000, 1, 1, '01.01.2012') RETURNING "id" INTO v_id_book;
+   VALUES ('Все-все-все сказки', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2012') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
-INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
-INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
-
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
---------------------------------------------------------------------------------------------------------------------------
-INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Над пропастью в поколение', 2, 1000, 1, 2, '01.01.2013') RETURNING "id" INTO v_id_book; 
-
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
-INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
-INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
-
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-
---------------------------------------------------------------------------------------------------------------------------
-INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Сказки и рассказы русских писателей', 2, 1000, 1, 3, '01.01.2014') RETURNING "id" INTO v_id_book; 
-
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Бажов'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -586,9 +558,44 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('1000 рассказов, сказок и стихов', 1, 1000, 1, 4, '01.01.2015') RETURNING "id" INTO v_id_book;
+   VALUES ('Над пропастью в поколение', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2013') RETURNING "id" INTO v_id_book; 
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Пришвин'));
+INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
+INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
+
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+
+--------------------------------------------------------------------------------------------------------------------------
+INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
+   VALUES ('Сказки и рассказы русских писателей', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2014') RETURNING "id" INTO v_id_book; 
+
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Тютчев'));
+INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
+INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
+
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+--------------------------------------------------------------------------------------------------------------------------
+INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
+   VALUES ('1000 рассказов, сказок и стихов', v_age_limit(0), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2015') RETURNING "id" INTO v_id_book;
+
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Есенин'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -604,17 +611,17 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 --------------------------------------------------------------------------------------------------------------------------
 /*Журналы*/
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Максим', 1, 150, 2, 5, '01.01.2017') RETURNING "id" INTO v_id_book;
+   VALUES ('Максим', v_age_limit(12), 150, v_book_type('Журнал'), v_publishing_house('АСТ'), '01.01.2017') RETURNING "id" INTO v_id_book;
 --------------------------------------------------------------------------------------------------------------------------
 /*Газеты*/
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Известия', 1, 50, 3, 6, '01.01.2018') RETURNING "id" INTO v_id_book;
+   VALUES ('Известия',  v_age_limit(12), 50, v_book_type('Газета'), v_publishing_house('АСТ'), '01.01.2018') RETURNING "id" INTO v_id_book;
 --------------------------------------------------------------------------------------------------------------------------
 /*Книги*/
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Инфа Нью', 1, 50, 3, 6, '01.01.2017') RETURNING "id" INTO v_id_book;
+   VALUES ('Инфа Нью',  v_age_limit(12), 50, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2017') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Кравченко'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -629,9 +636,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Превозмогая боль', 1, 1, 1500, 1, 9, '01.01.1986') RETURNING "id" INTO v_id_book;
+   VALUES ('Превозмогая боль', 1, v_age_limit(12), 1500, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.1986') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Сладков'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -646,9 +653,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL); 
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Превозмогая боль', 2, 1, 1400, 1, 8, '01.01.1987') RETURNING "id" INTO v_id_book;
+   VALUES ('Превозмогая боль', 2, v_age_limit(12), 1400, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1987') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Макаренко'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -663,9 +670,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-    VALUES ('Превозмогая боль', 3, 1, 1300, 1, 7, '01.01.1988') RETURNING "id" INTO v_id_book;
+    VALUES ('Превозмогая боль', 3,  v_age_limit(12), 1300, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.1988') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Машковская'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -680,9 +687,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Превозмогая боль', 4, 1, 1200, 1, 6, '01.01.1989') RETURNING "id" INTO v_id_book;
+   VALUES ('Превозмогая боль', 4, v_age_limit(12), 1200, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1989') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Грибоедов'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -697,9 +704,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Маша и медведь', 2, 1000, 1, 5, '01.01.1990') RETURNING "id" INTO v_id_book;
+   VALUES ('Маша и медведь', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1990') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Крусанов'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -714,9 +721,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Маша и медведь', 2, 900, 1, 4, '01.01.1991') RETURNING "id" INTO v_id_book;
+   VALUES ('Маша и медведь', v_age_limit(12), 900, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1991') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Тютчев'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -731,9 +738,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Маша и медведь', 2, 1100, 1, 3, '01.01.1992') RETURNING "id" INTO v_id_book;
+   VALUES ('Маша и медведь', v_age_limit(12), 1100, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1992') RETURNING "id" INTO v_id_book;
 
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Есенин'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -748,9 +755,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Маша и медведь', 2, 1200, 1, 2, '01.01.1993') RETURNING "id" INTO v_id_book;
+   VALUES ('Маша и медведь', v_age_limit(12), 1200, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1993') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Джером'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -765,9 +772,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Маша и медведь', 2, 1300, 1, 1, '01.01.1994') RETURNING "id" INTO v_id_book;
+   VALUES ('Маша и медведь', v_age_limit(12), 1300, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1994') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Твен'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -786,9 +793,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Эмоджинариум', 1, 2, 900, 1, 2, '01.01.1995') RETURNING "id" INTO v_id_book;
+   VALUES ('Эмоджинариум', 1, v_age_limit(12), 900, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1995') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Ключарёва'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -813,9 +820,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Эмоджинариум', 2, 2, 1000, 1, 3, '01.01.1996') RETURNING "id" INTO v_id_book;
+   VALUES ('Эмоджинариум', 2, v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1996') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Пришвин'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -832,7 +839,7 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Кавбой', 3, 1200, 1, 4, '01.01.1997') RETURNING "id" INTO v_id_book;
+   VALUES ('Кавбой', v_age_limit(12), 1200, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1997') RETURNING "id" INTO v_id_book;
    
 INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
@@ -849,9 +856,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Усталость', 5, 1000, 1, 5, '01.01.1998') RETURNING "id" INTO v_id_book;
+   VALUES ('Усталость', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1998') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Кравченко'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -864,30 +871,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Милиарды строк', 3, 1000, 1, 6, '01.01.1999') RETURNING "id" INTO v_id_book;
+   VALUES ('Милиарды строк', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1999') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
-INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
-INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
-
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
---------------------------------------------------------------------------------------------------------------------------
-INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Ни смотря не на что', 2, 1000, 1, 7, '01.01.2000') RETURNING "id" INTO v_id_book;
-   
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Кухаркин'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -904,44 +890,11 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Полдень', 2, 1000, 1, 8, '01.01.2001') RETURNING "id" INTO v_id_book;
+   VALUES ('Ни смотря не на что',  v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2000') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
-INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
-INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
-
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
---------------------------------------------------------------------------------------------------------------------------
-INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Полночь', 2, 1000, 1, 9, '01.01.2002') RETURNING "id" INTO v_id_book;
-   
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Лермонтов'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -963,9 +916,63 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Южный вечер', 2, 1000, 1, 8, '01.01.2003') RETURNING "id" INTO v_id_book;
+   VALUES ('Полдень', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2001') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Гоголь'));
+INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
+INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
+
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+--------------------------------------------------------------------------------------------------------------------------
+INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
+   VALUES ('Полночь', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2002') RETURNING "id" INTO v_id_book;
+   
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Богатырёва'));
+INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
+INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
+
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+--------------------------------------------------------------------------------------------------------------------------
+INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
+   VALUES ('Южный вечер', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2003') RETURNING "id" INTO v_id_book;
+   
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Грибоедов'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -988,9 +995,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING)
-   VALUES ('Холодная сибирь', 2, 1000, 1, 7, '01.01.2004') RETURNING "id" INTO v_id_book;
+   VALUES ('Холодная сибирь', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2004') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Михалков'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -1013,9 +1020,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Короткое лето 2022', 2, 1000, 1, 6, '01.01.2005') RETURNING "id" INTO v_id_book;
+   VALUES ('Короткое лето 2022', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2005') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Бажов'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -1035,9 +1042,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Пролетела осень', 2, 1000, 1, 5, '01.01.2006') RETURNING "id" INTO v_id_book;
+   VALUES ('Пролетела осень', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2006') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Твен'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -1064,9 +1071,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Война', 2, 1000, 1, 4, '01.01.2007') RETURNING "id" INTO v_id_book;
+   VALUES ('Война',  v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2007') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Дашевская'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -1085,9 +1092,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Донбас', 2, 1000, 1, 5, '01.01.2008') RETURNING "id" INTO v_id_book;
+   VALUES ('Донбас',  v_age_limit(18), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2008') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Шолохов'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -1105,33 +1112,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Мобилизация', 2, 1000, 1, 6, '01.01.2009') RETURNING "id" INTO v_id_book;
+   VALUES ('Мобилизация', v_age_limit(18), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2009') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
-INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
-INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
-INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
-
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
---------------------------------------------------------------------------------------------------------------------------
-INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Путин', 2, 1000, 1, 3, '01.01.2010') RETURNING "id" INTO v_id_book;
-   
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Сладков'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -1153,9 +1136,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Шойгу', 2, 1000, 1, 2, '01.01.2011') RETURNING "id" INTO v_id_book;
+   VALUES ('Путин', v_age_limit(18), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2010') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Есенин'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -1177,9 +1160,33 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Революция', 2, 1000, 1, 1, '01.01.2012') RETURNING "id" INTO v_id_book;
+   VALUES ('Шойгу',  v_age_limit(6), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2011') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Кравченко'));
+INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
+INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
+INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
+
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+--------------------------------------------------------------------------------------------------------------------------
+INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
+   VALUES ('Революция',  v_age_limit(6), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2012') RETURNING "id" INTO v_id_book;
+   
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Чехов'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -1199,9 +1206,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Ленин', 2, 1000, 1, 2, '01.01.2013') RETURNING "id" INTO v_id_book;
+   VALUES ('Ленин', v_age_limit(6), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2013') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Грибоедов'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -1219,9 +1226,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Сталин', 2, 1000, 1, 3, '01.01.2014') RETURNING "id" INTO v_id_book;
+   VALUES ('Сталин', v_age_limit(6), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2014') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Кухаркин'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
@@ -1237,9 +1244,9 @@ INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
-   VALUES ('Я ж программист', 1, 1000, 1, 4, '01.01.2015') RETURNING "id" INTO v_id_book;
+   VALUES ('Я ж программист', v_age_limit(6), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2015') RETURNING "id" INTO v_id_book;
    
-INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Толстой'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Басова'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
