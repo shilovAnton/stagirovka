@@ -1,7 +1,7 @@
 DECLARE
 /*Создаем метод, возвращающий таблицу вернувшихся книг за определенный день*/
 
-    v_parametr_date DATE := ROUND(to_date(SYSDATE(), 'dd.mm.yy'));--to_date('11.10.2022', 'dd.mm.yyyy');
+    v_parametr_date DATE := ROUND(SYSDATE);
     rc sys_refcursor;
     
     --переменные для обработки ошибок
@@ -36,7 +36,7 @@ BEGIN
             LEFT OUTER JOIN tags_book tb        ON b."id" = tb.id_book
             LEFT OUTER JOIN tags t              ON tb.id_tag = t."id"
         WHERE
-            l.FACT_DATE_BOOK = v_parametr_date
+            ROUND(l.FACT_DATE_BOOK) = v_parametr_date
         GROUP BY
             b.name_book,  b.tom, ag.age_limit, ph.publishing_house, l.id_book, l."id", l.FACT_DATE_BOOK;
 
