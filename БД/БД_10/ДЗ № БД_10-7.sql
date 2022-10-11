@@ -35,5 +35,6 @@ OPEN rc FOR
     GROUP BY
         b.name_book,  b.tom, ag.age_limit, ph.publishing_house, l.id_book, l."id", l.FACT_DATE_BOOK;
         
-   dbms_sql.return_result(rc);  
+   dbms_sql.return_result(rc);
 end;
+

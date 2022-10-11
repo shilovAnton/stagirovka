@@ -446,3 +446,4 @@ CREATE INDEX index_is_log ON
     issuance_log (
         date_of_issue_book
     );
+    

@@ -1,7 +1,7 @@
 DECLARE
 /*Создаем метод, возвращающий таблицу выданных книг за определенный день*/
 
-v_parametr_date DATE := to_date('10-OCT-22', 'DD-MON-YY');
+v_parametr_date DATE := to_date('11.10.2022', 'dd.mm.yyyy');
 
 rc sys_refcursor;
 
@@ -31,9 +31,9 @@ OPEN rc FOR
         LEFT OUTER JOIN tags_book tb        ON b."id" = tb.id_book
         LEFT OUTER JOIN tags t              ON tb.id_tag = t."id"
     WHERE
-        to_date(l.DATE_OF_ISSUE_BOOK, 'DD-MON-YY') = v_parametr_date
+        to_date(l.DATE_OF_ISSUE_BOOK, 'dd.mm.yyyy') = v_parametr_date
     GROUP BY
         b.name_book,  b.tom, ag.age_limit, ph.publishing_house, l.id_book, l."id", l.DATE_OF_ISSUE_BOOK;
         
-   dbms_sql.return_result(rc);  
+   dbms_sql.return_result(rc);
 end;

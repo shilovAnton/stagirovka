@@ -72,5 +72,5 @@ BEGIN
         v_id_reader_rating,
         v_id_role
     );
-
+    dbms_output.put_line('Читательский билет создан!!!'); 
 END;
