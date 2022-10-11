@@ -56,24 +56,6 @@ DECLARE
     v_stnt VARCHAR2(200);
     --переменная для строки курсора выборки читателя
     v_reader LIBRARY_CARD%ROWTYPE;
-    ----------------------------------------  ---------------------------------------
-    --создание курсора читателя
-    -- CURSOR cursor_reader IS
-    --     SELECT
-    --         lc."id",
-    --         LC.READERS_LASTNAME,
-    --         LC.READERS_FIRSTNAME,
-    --         LC.READERS_PATRONYMIC,
-    --         LC.DATE_OF_ISSUE_CARD,
-    --         LC.SUM_FINES,
-    --         RR.READER_RATING,
-    --         LC.CLOSING_DATE,
-    --         ROUND((SYSDATE  - lc.date_of_birth)/365) as age_readers
-    --     FROM
-    --         library_card lc
-    --         LEFT OUTER JOIN reader_rating rr ON rr."id" = lc.id_reader_rating
-    --     WHERE
-    --         lc."id" = v_id_reader;
     -----------------------------------------------------------------------------------------------------
     --переменные для обработки ошибок
     e_buf_small EXCEPTION;
@@ -105,7 +87,7 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE('Возраст читателя: '||age_readers);
         DBMS_OUTPUT.PUT_LINE('Сумма штрафов: '||v_reader.sum_fines);
         DBMS_OUTPUT.PUT_LINE('Дата создания читательского билета: '||TO_CHAR(v_reader.date_of_issue_card, 'dd.mm.yyyy'));
--------------------------------------------------------
+    -------------------------------------------------------
     OPEN cursor_book;
     LOOP
         FETCH cursor_book INTO v_current_book;
