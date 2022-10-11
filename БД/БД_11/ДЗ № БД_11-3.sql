@@ -50,46 +50,61 @@ DECLARE
     --переменная для строки курсора выборки книги
     v_current_book cursor_book%ROWTYPE;
 
-    --создание курсора читателя
-    CURSOR cursor_reader IS
-        SELECT
-            lc."id",
-            LC.READERS_LASTNAME,
-            LC.READERS_FIRSTNAME,
-            LC.READERS_PATRONYMIC,
-            LC.DATE_OF_ISSUE_CARD,
-            LC.SUM_FINES,
-            RR.READER_RATING,
-            LC.CLOSING_DATE,
-            ROUND((SYSDATE  - lc.date_of_birth)/365) as age_readers
-        FROM
-            library_card lc
-            LEFT OUTER JOIN reader_rating rr ON rr."id" = lc.id_reader_rating
-        WHERE
-            lc."id" = v_id_reader;
-
+    ---------------------------------------------------------------------------------
+    --динамический SQL
+    --переменная запроса
+    v_stnt VARCHAR2(200);
     --переменная для строки курсора выборки читателя
-    v_reader cursor_reader%ROWTYPE;
-    
+    v_reader LIBRARY_CARD%ROWTYPE;
+    ----------------------------------------  ---------------------------------------
+    --создание курсора читателя
+    -- CURSOR cursor_reader IS
+    --     SELECT
+    --         lc."id",
+    --         LC.READERS_LASTNAME,
+    --         LC.READERS_FIRSTNAME,
+    --         LC.READERS_PATRONYMIC,
+    --         LC.DATE_OF_ISSUE_CARD,
+    --         LC.SUM_FINES,
+    --         RR.READER_RATING,
+    --         LC.CLOSING_DATE,
+    --         ROUND((SYSDATE  - lc.date_of_birth)/365) as age_readers
+    --     FROM
+    --         library_card lc
+    --         LEFT OUTER JOIN reader_rating rr ON rr."id" = lc.id_reader_rating
+    --     WHERE
+    --         lc."id" = v_id_reader;
+    -----------------------------------------------------------------------------------------------------
     --переменные для обработки ошибок
     e_buf_small EXCEPTION;
     PRAGMA EXCEPTION_INIT(e_buf_small, -06502);
     v_error_code NUMBER;
     v_error_message VARCHAR2(255);
+    
+    --переменная возраста читателя
+    age_readers NUMBER;
 BEGIN
--------------------------------------------------------
-    OPEN cursor_reader;
-    LOOP 
-        FETCH cursor_reader INTO v_reader;
-        EXIT WHEN cursor_reader%NOTFOUND;
+    -------------------------------------------------------
+    --блок динамического SQL
+    v_stnt :=   'SELECT
+                    *
+                FROM
+                    library_card
+                WHERE
+                    "id" = :v_id_reader';
+                    
+    EXECUTE IMMEDIATE v_stnt
+    INTO v_reader
+    USING v_id_reader;
+    
+    age_readers := ROUND((SYSDATE  - v_reader.date_of_birth)/365);
+    -------------------------------------------------------
         DBMS_OUTPUT.PUT_LINE('=======================================================');
         DBMS_OUTPUT.PUT_LINE('Читатель: '||v_reader.readers_lastname||' '||v_reader.readers_firstname||' '||v_reader.readers_patronymic);
-        DBMS_OUTPUT.PUT_LINE('Рейтинг читателя: '||v_reader.reader_rating);
-        DBMS_OUTPUT.PUT_LINE('Возраст читателя: '||v_reader.age_readers);
+        DBMS_OUTPUT.PUT_LINE('Рейтинг читателя: '||v_reader.id_reader_rating);
+        DBMS_OUTPUT.PUT_LINE('Возраст читателя: '||age_readers);
         DBMS_OUTPUT.PUT_LINE('Сумма штрафов: '||v_reader.sum_fines);
         DBMS_OUTPUT.PUT_LINE('Дата создания читательского билета: '||TO_CHAR(v_reader.date_of_issue_card, 'dd.mm.yyyy'));
-    END LOOP;
-    CLOSE cursor_reader;
 -------------------------------------------------------
     OPEN cursor_book;
     LOOP
@@ -117,14 +132,14 @@ BEGIN
             error_subscript := 1;
         END IF;
         --проверка на возрастное ограничение
-        IF v_reader.age_readers >= v_current_book.age_limit THEN
+        IF age_readers >= v_current_book.age_limit THEN
             DBMS_OUTPUT.PUT_LINE('Читатель проходит по возрастному ограничению - Ok');
         ELSE
             DBMS_OUTPUT.PUT_LINE('Читатель НЕ проходит по возрастному ограничению - No!!!');
             error := 1;
         END IF;
         --проверка на рейтинг
-        IF v_reader.reader_rating >= 3 THEN
+        IF v_reader.id_reader_rating >= 3 THEN
             DBMS_OUTPUT.PUT_LINE('Читатель проходит по рейтингу - Ok');
         ELSE
             DBMS_OUTPUT.PUT_LINE('Читатель НЕ проходит по рейтингу - No!!!');

@@ -95,7 +95,6 @@ BEGIN
     
         END IF;
     END LOOP;
-            
 -------------------------------------------------------
     --проверка на существование и запись жанров
     FOR i IN 1..v_genres.count LOOP
@@ -197,11 +196,6 @@ EXCEPTION
         dbms_output.put_line('Код ошибки - '|| v_error_code);
         dbms_output.put_line('Сщщбщение: '|| v_error_message);
 END;
-
-
-
-
-
 
 
 
