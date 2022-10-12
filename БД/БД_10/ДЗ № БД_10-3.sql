@@ -6,7 +6,7 @@ DECLARE
     v_name_book books.name_book%TYPE := 'Война и мир';
     v_author_lastname author.author_lastname%TYPE := 'Толстой';
     v_tom books.tom%TYPE := 1;
-    v_publishing_house publishing_house.publishing_house%TYPE := 'Родина';
+    v_publishing_house publishing_house.publishing_house%TYPE := 'Эксмо';
 
     --переменная для читателя
     v_id_reader library_card."id"%TYPE := 11;
