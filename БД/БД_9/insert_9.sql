@@ -12,7 +12,6 @@ DECLARE
     v_genres ass_type_ch;
     v_publishing_house ass_type_ch;
     v_auhtor ass_type_ch;
-
 BEGIN
 /*заполняем ROLES*/
 INSERT INTO "ROLES" ("role") VALUES ('Клиент') RETURNING "id" INTO v_roles('Клиент');
