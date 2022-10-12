@@ -38,7 +38,7 @@ FROM
     LEFT OUTER JOIN genres      g ON gb.id_genre = g."id"
     LEFT OUTER JOIN publishing_house   p ON b.id_publishing_house = p."id"
 GROUP BY b.name_book,  b.tom, al.age_limit, p.publishing_house, b.year_of_publishing
-HAVING b.year_of_publishing > 1990 and p.publishing_house = 'Литер';
+HAVING b.year_of_publishing > TO_DATE('1990', 'yyyy') and p.publishing_house = 'Литер';
     
 /*3. Найти книги по заданным критериям (по жанру, по тегам, по автору, по ограничению)*/
 SELECT
@@ -61,7 +61,7 @@ FROM
     LEFT OUTER JOIN tags             t ON tb.id_tag = t."id"
 GROUP BY b.name_book,  b.tom, ag.age_limit, ph.publishing_house
 HAVING 
-    LISTAGG(DISTINCT t.tag, ', ') LIKE '%Россия%' 
+    LISTAGG(DISTINCT t.tag, ', ') LIKE '%Война%' 
     and LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||
     ' '|| a.author_patronymic), ', ') LIKE '%Толстой%' 
     and age_limit >= 0;  
@@ -142,7 +142,7 @@ FROM
         ag.age_limit
     FROM
             inventory_number i
-        LEFT OUTER JOIN books b             ON i.id_book = b."id"
+        RIGHT OUTER JOIN books b             ON i.id_book = b."id"
         LEFT OUTER JOIN author_book ab      ON b."id" = ab.id_book
         LEFT OUTER JOIN author a            ON ab.id_author = a."id"
         LEFT OUTER JOIN genre_book gb       ON b."id" = gb.id_book
@@ -159,16 +159,8 @@ WHERE   (amount < 2 and
                         (SYSDATE  - lc.date_of_birth)/365
                     FROM
                     library_card lc
-                    WHERE lc."id" = 3
-                    ) and
-        ( --подзапрос для выеснения рейтинга читателя
-        SELECT 
-            reader_rating
-        FROM
-            library_card lc
-        LEFT OUTER JOIN reader_rating rr ON rr."id" = lc.id_reader_rating
-        WHERE lc."id" = 3
-        ) > 2) or
+                    WHERE lc."id" = 10
+                    )) or
         book_type = 'Журнал' or
         book_type = 'Газета';
         
@@ -197,7 +189,7 @@ FROM
         ag.age_limit
     FROM
             inventory_number i 
-        LEFT OUTER JOIN books b             ON i.id_book = b."id"
+        RIGHT OUTER JOIN books b             ON i.id_book = b."id"
         LEFT OUTER JOIN author_book ab      ON b."id" = ab.id_book
         LEFT OUTER JOIN author a            ON ab.id_author = a."id"
         LEFT OUTER JOIN genre_book gb       ON b."id" = gb.id_book
@@ -249,7 +241,7 @@ SELECT
     c."id" as "id reader",
     c.readers_lastname||' '||c.readers_firstname||' '||c.readers_patronymic AS reader,
     rr.reader_rating,
-    ROUND(SYSDATE - l.delivery_date_book)
+    max(ROUND(SYSDATE - l.delivery_date_book))
 FROM
     issuance_log l
 LEFT OUTER JOIN library_card c ON l.id_libray_card = c."id"
@@ -258,7 +250,7 @@ WHERE
     --условие по просрочке
    (l.fact_date_book is null) and ((SYSDATE - l.delivery_date_book) > 15) or
    c.id_reader_rating < 2
-GROUP BY c."id", c."id", rr.reader_rating, ROUND(SYSDATE - l.delivery_date_book),
+GROUP BY c."id", c."id", rr.reader_rating, 
 c.readers_lastname||' '||c.readers_firstname||' '||c.readers_patronymic;
 
 /*10. Найти книгу похожую на ранее прочитанную*/
