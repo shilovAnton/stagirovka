@@ -48,7 +48,7 @@ BEGIN
         WHERE
             l.ID_INVENTORY_NUMBER = v_id_inventory_number;
 
-    dbms_sql.return_result(rc); 
+    dbms_sql.return_result(rc);
 ------------------------------------------------------------
 EXCEPTION
     WHEN e_buf_small THEN

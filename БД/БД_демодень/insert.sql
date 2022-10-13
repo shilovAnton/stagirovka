@@ -125,13 +125,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Война и мир', 2, v_age_limit(12), 1500,  v_book_type('Книга'), v_publishing_house('Эксмо'), '01.01.1986') RETURNING "id" INTO v_id_book;
@@ -142,12 +138,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Война и мир', 3, v_age_limit(12), 1500,  v_book_type('Книга'), v_publishing_house('Эксмо'), '01.01.1986') RETURNING "id" INTO v_id_book;
@@ -158,12 +151,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Война и мир', 4, v_age_limit(12), 1500, v_book_type('Книга'), v_publishing_house('Эксмо'), '01.01.1986') RETURNING "id" INTO v_id_book;
@@ -174,7 +164,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Братья Карамазовы', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Эксмо'), '01.01.1990') RETURNING "id" INTO v_id_book;
@@ -186,10 +178,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Братья Карамазовы', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Эксмо'), '01.01.1990') RETURNING "id" INTO v_id_book;
@@ -201,10 +192,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Братья Карамазовы', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Эксмо'), '01.01.1990') RETURNING "id" INTO v_id_book;
@@ -216,10 +206,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Братья Карамазовы', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Эксмо'), '01.01.1990') RETURNING "id" INTO v_id_book;
@@ -231,10 +220,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Братья Карамазовы', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.1990') RETURNING "id" INTO v_id_book;
@@ -246,7 +234,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Тихий Дон. В 2-х томах', 1, v_age_limit(12), 900, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.1995') RETURNING "id" INTO v_id_book;
@@ -258,11 +248,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Тихий Дон. В 2-х томах', 2, v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.1996') RETURNING "id" INTO v_id_book;
@@ -274,11 +262,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Отцы и дети', v_age_limit(12), 1200, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.1997') RETURNING "id" INTO v_id_book;
@@ -290,11 +276,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Герой нашего времени', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.1998') RETURNING "id" INTO v_id_book;
@@ -306,31 +290,24 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Горе от ума', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.1999') RETURNING "id" INTO v_id_book;
 
 INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Грибоедов'));
+INSERT INTO AUTHOR_BOOK (ID_BOOK, ID_AUTHOR) VALUES (v_id_book, v_auhtor('Пушкин'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Роман'));
 INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боевик'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Педагогическая поэма', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2000') RETURNING "id" INTO v_id_book;
@@ -342,13 +319,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Вишневый сад', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2001') RETURNING "id" INTO v_id_book;
@@ -360,13 +333,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Анна Каренина', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2002') RETURNING "id" INTO v_id_book;
@@ -377,14 +346,6 @@ INSERT INTO GENRE_BOOK (ID_BOOK, ID_GENRE) VALUES (v_id_book, v_genres('Боев
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
-
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Евгений Онегин', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2003') RETURNING "id" INTO v_id_book;
@@ -396,13 +357,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING)
    VALUES ('Судьба человека', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2004') RETURNING "id" INTO v_id_book;
@@ -414,13 +371,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Внутри что-то есть', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2005') RETURNING "id" INTO v_id_book;
@@ -433,13 +386,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Чуть правее сердца. Сборник рассказов', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2006') RETURNING "id" INTO v_id_book;
@@ -452,11 +401,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Никому не рассказывай', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2007') RETURNING "id" INTO v_id_book;
@@ -469,7 +416,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Письмо с подснежником', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2008') RETURNING "id" INTO v_id_book;
@@ -482,10 +431,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Стихи, сказки и рассказы', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2009') RETURNING "id" INTO v_id_book;
@@ -511,10 +459,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Стихи и рассказы о Родине', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2011') RETURNING "id" INTO v_id_book;
@@ -527,10 +474,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Все-все-все сказки', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2012') RETURNING "id" INTO v_id_book;
@@ -542,12 +488,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Над пропастью в поколение', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2013') RETURNING "id" INTO v_id_book; 
@@ -559,13 +502,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Сказки и рассказы русских писателей', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2014') RETURNING "id" INTO v_id_book; 
@@ -577,12 +516,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('1000 рассказов, сказок и стихов', v_age_limit(0), 1000, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.2015') RETURNING "id" INTO v_id_book;
@@ -594,26 +530,25 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 /*Журналы*/
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Максим', v_age_limit(12), 150, v_book_type('Журнал'), v_publishing_house('АСТ'), '01.01.2017') RETURNING "id" INTO v_id_book;
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 /*Газеты*/
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Известия',  v_age_limit(12), 50, v_book_type('Газета'), v_publishing_house('АСТ'), '01.01.2018') RETURNING "id" INTO v_id_book;
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 /*Книги*/
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
@@ -626,12 +561,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Превозмогая боль', 1, v_age_limit(12), 1500, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.1986') RETURNING "id" INTO v_id_book;
@@ -643,12 +575,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL); 
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Превозмогая боль', 2, v_age_limit(12), 1400, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1987') RETURNING "id" INTO v_id_book;
@@ -660,12 +589,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
     VALUES ('Превозмогая боль', 3,  v_age_limit(12), 1300, v_book_type('Книга'), v_publishing_house('АСТ'), '01.01.1988') RETURNING "id" INTO v_id_book;
@@ -677,12 +603,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Превозмогая боль', 4, v_age_limit(12), 1200, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1989') RETURNING "id" INTO v_id_book;
@@ -694,12 +617,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Маша и медведь', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1990') RETURNING "id" INTO v_id_book;
@@ -711,12 +631,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Маша и медведь', v_age_limit(12), 900, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1991') RETURNING "id" INTO v_id_book;
@@ -728,12 +645,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Маша и медведь', v_age_limit(12), 1100, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1992') RETURNING "id" INTO v_id_book;
@@ -745,12 +659,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Маша и медведь', v_age_limit(12), 1200, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1993') RETURNING "id" INTO v_id_book;
@@ -763,11 +674,6 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Маша и медведь', v_age_limit(12), 1300, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1994') RETURNING "id" INTO v_id_book;
@@ -779,16 +685,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Эмоджинариум', 1, v_age_limit(12), 900, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1995') RETURNING "id" INTO v_id_book;
@@ -800,22 +699,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, TOM, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Эмоджинариум', 2, v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1996') RETURNING "id" INTO v_id_book;
@@ -839,12 +725,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Усталость', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1998') RETURNING "id" INTO v_id_book;
@@ -856,10 +739,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Милиарды строк', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.1999') RETURNING "id" INTO v_id_book;
@@ -871,16 +753,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Ни смотря не на что',  v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2000') RETURNING "id" INTO v_id_book;
@@ -892,19 +767,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Полдень', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2001') RETURNING "id" INTO v_id_book;
@@ -916,25 +781,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Полночь', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2002') RETURNING "id" INTO v_id_book;
@@ -946,19 +795,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Южный вечер', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2003') RETURNING "id" INTO v_id_book;
@@ -970,20 +809,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING)
    VALUES ('Холодная сибирь', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2004') RETURNING "id" INTO v_id_book;
@@ -995,20 +823,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Короткое лето 2022', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2005') RETURNING "id" INTO v_id_book;
@@ -1020,17 +837,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Пролетела осень', v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2006') RETURNING "id" INTO v_id_book;
@@ -1042,24 +851,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Война',  v_age_limit(12), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2007') RETURNING "id" INTO v_id_book;
@@ -1071,16 +865,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Донбас',  v_age_limit(18), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2008') RETURNING "id" INTO v_id_book;
@@ -1092,15 +879,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Мобилизация', v_age_limit(18), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2009') RETURNING "id" INTO v_id_book;
@@ -1112,19 +893,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Путин', v_age_limit(18), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2010') RETURNING "id" INTO v_id_book;
@@ -1136,19 +907,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Шойгу',  v_age_limit(6), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2011') RETURNING "id" INTO v_id_book;
@@ -1160,19 +921,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Революция',  v_age_limit(6), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2012') RETURNING "id" INTO v_id_book;
@@ -1184,17 +935,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Ленин', v_age_limit(6), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2013') RETURNING "id" INTO v_id_book;
@@ -1206,15 +949,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Сталин', v_age_limit(6), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2014') RETURNING "id" INTO v_id_book;
@@ -1226,13 +963,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 INSERT INTO BOOKS (NAME_BOOK, ID_AGE_LIMIT, PRICE, ID_BOOK_TYPE, ID_PUBLISHING_HOUSE, YEAR_OF_PUBLISHING) 
    VALUES ('Я ж программист', v_age_limit(6), 1000, v_book_type('Книга'), v_publishing_house('Литер'), '01.01.2015') RETURNING "id" INTO v_id_book;
@@ -1244,14 +977,9 @@ INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Война'))
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Мир'));
 INSERT INTO TAGS_BOOK (ID_BOOK, ID_TAG) VALUES (v_id_book, v_tags('Толстой'));
 
+FOR i IN 1..round(dbms_random.value(1,20)) LOOP
 INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
-INSERT INTO INVENTORY_NUMBER (ID_BOOK, ARRIVAL_BOOK, WRITE_OFF_DATE_BOOK) VALUES (v_id_book, '02.04.1995', NULL);
+END LOOP;
 --------------------------------------------------------------------------------------------------------------------------
 
 /*заполняем LIBRARY_CARD*/--рейтинг совпадает с id

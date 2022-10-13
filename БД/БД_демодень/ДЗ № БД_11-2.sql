@@ -1,12 +1,38 @@
+CREATE OR REPLACE PROCEDURE add_book (
+/*Создаем метод по созданию новой книги (новый автор, новое издание)*/
+    p_name_book VARCHAR2(100 CHAR) := 'Капитал';
+    p_tom NUMBER;
+    p_book_type VARCHAR2(60 CHAR) := 'Книга';
+    p_age_limit NUMBER := 12;
+    p_publishing_house VARCHAR2(60 CHAR) := 'Просвещение';
+    p_year_of_publishing DATE := '01.01.1998';
+    p_price NUMBER := 2500;
+
+
+    p_readers_lastname      IN  library_card.readers_lastname%TYPE,
+    p_readers_firstname     IN  library_card.readers_firstname%TYPE,
+    p_readers_patronymic    IN  library_card.readers_patronymic%TYPE,
+    p_date_of_birth         IN  library_card.date_of_birth%TYPE,
+    p_role                  IN  roles."role"%TYPE,
+    p_reader_rating         IN  reader_rating.reader_rating%TYPE
+    )
+IS
+    v_date_of_issue_card library_card.date_of_issue_card%TYPE := sysdate();
+    v_id_reader_rating NUMBER;
+    v_id_role NUMBER;
+    
+    --переменные для обработки ошибок
+    e_buf_small EXCEPTION;
+    PRAGMA EXCEPTION_INIT(e_buf_small, -06502);
+    v_error_code NUMBER;
+    v_error_message VARCHAR2(255);
+
+
+
+
 DECLARE
 /*Создаем метод по созданию новой книги (новый автор, новое издание)*/
-    v_name_book VARCHAR2(100 CHAR) := 'Капитал';
-    v_tom NUMBER;
-    v_book_type VARCHAR2(60 CHAR) := 'Книга';
-    v_age_limit NUMBER := 12;
-    v_publishing_house VARCHAR2(60 CHAR) := 'Просвещение';
-    v_year_of_publishing DATE := '01.01.1998';
-    v_price NUMBER := 2500;
+
 
     --создаём общие типы массивов
     type varchar_array IS VARRAY(20) OF VARCHAR2(60 CHAR);
@@ -196,6 +222,36 @@ EXCEPTION
         dbms_output.put_line('Код ошибки - '|| v_error_code);
         dbms_output.put_line('Сщщбщение: '|| v_error_message);
 END;
+
+
+
+
+    v_name_book VARCHAR2(100 CHAR) := 'Капитал';
+    v_tom NUMBER;
+    v_book_type VARCHAR2(60 CHAR) := 'Книга';
+    v_age_limit NUMBER := 12;
+    v_publishing_house VARCHAR2(60 CHAR) := 'Просвещение';
+    v_year_of_publishing DATE := '01.01.1998';
+    v_price NUMBER := 2500;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -133,6 +133,7 @@ SELECT
 FROM
     (
     SELECT
+        i.id_book,
         COUNT(i.id_book) as amount,
         bt.book_type,
         b.name_book,
@@ -142,7 +143,7 @@ FROM
         ag.age_limit
     FROM
             inventory_number i
-        RIGHT OUTER JOIN books b             ON i.id_book = b."id"
+        RIGHT OUTER JOIN books b            ON i.id_book = b."id"
         LEFT OUTER JOIN author_book ab      ON b."id" = ab.id_book
         LEFT OUTER JOIN author a            ON ab.id_author = a."id"
         LEFT OUTER JOIN genre_book gb       ON b."id" = gb.id_book
@@ -167,7 +168,14 @@ WHERE   (amount < 2 and
 /*7. Запрос который покажет может ли читатель почитать/получить желаемую книгу*/ 
 SELECT
     book."id",
-    amount,
+    (
+    SELECT
+        COUNT(*)
+    FROM
+        inventory_number 
+    WHERE
+        id_book = 63
+        ) as Amount,
     book_type,
     name_book,
     tom, 
@@ -180,7 +188,6 @@ FROM
     (
     SELECT
         b."id",
-        COUNT(i.id_book) as amount,
         bt.book_type,
         b.name_book,
         b.tom,
@@ -198,9 +205,9 @@ FROM
         LEFT OUTER JOIN publishing_house ph ON b.id_publishing_house = ph."id"
         LEFT OUTER JOIN book_type bt        ON bt."id" = b.id_book_type
     GROUP BY i.id_book, b.name_book, b.tom, ag.age_limit, bt.book_type, b."id"
-    HAVING b."id" = 9
+    HAVING b."id" = 63
     ) book, library_card lc
-WHERE lc."id" = 4;
+    WHERE lc."id" = 4;
 
 /*8. Вывести список просроченных книг и их держателей со сроком просрочки*/
 SELECT
@@ -296,3 +303,8 @@ WHERE t."id" in (
                         GROUP BY b.name_book, g."id"
                     )
 GROUP BY b."id", b.name_book, b.tom, p.publishing_house, age_limit;
+
+
+
+
+

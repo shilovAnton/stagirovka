@@ -24,7 +24,7 @@ OPEN rc FOR
         LISTAGG(DISTINCT t.tag, ', ') AS tag,
         l.DATE_OF_ISSUE_BOOK
     FROM
-                issuance_log l
+            issuance_log l
         LEFT OUTER JOIN books b             ON b."id" = l.id_book
         LEFT OUTER JOIN author_book ab      ON b."id" = ab.id_book
         LEFT OUTER JOIN author a        ON ab.id_author = a."id"
@@ -39,7 +39,7 @@ OPEN rc FOR
     GROUP BY
         b.name_book,  b.tom, ag.age_limit, ph.publishing_house, l.id_book, l."id", l.DATE_OF_ISSUE_BOOK;
         
-   dbms_sql.return_result(rc);
+    dbms_sql.return_result(rc);
 EXCEPTION
     WHEN e_buf_small THEN
         dbms_output.put_line('Буфер переменной слишком мал!!!'); 

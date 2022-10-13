@@ -1,47 +1,79 @@
-DECLARE
-/*Создаем методы по созданию пользователя и выдачи чит. билета - Анонимный
- PL/SQL блок.*/
-    v_readers_lastname   VARCHAR2(60 CHAR) := 'Петров';
-    v_readers_firstname  VARCHAR2(60 CHAR) := 'Андрей';
-    v_readers_patronymic VARCHAR2(60 CHAR) := 'Викторович';
-    v_date_of_birth      DATE := to_date('25.09.1989', 'dd.mm.yyyy');
-    v_date_of_issue_card DATE := sysdate();
-    v_id_reader_rating   NUMBER;
-    v_id_role            NUMBER;
-    v_role               VARCHAR2(60 CHAR) := 'Клиент';
-    v_reader_rating      NUMBER := 3;
+CREATE OR REPLACE FUNCTION out_id_role 
+    (p_param IN roles."role"%TYPE)
+RETURN NUMBER IS
+    v_id NUMBER;
+BEGIN
+    SELECT
+        r."id"
+    INTO v_id
+    FROM
+        roles r
+    WHERE
+        r."role" = p_param;
+RETURN v_id;
 
+EXCEPTION
+WHEN NO_DATA_FOUND THEN
+    v_id := 0;
+    RETURN v_id;
+END;
+/
+
+-------------------------------------------------------
+CREATE OR REPLACE FUNCTION out_id_reader_rating
+--проверка на существование роли
+    (p_param IN reader_rating.reader_rating%TYPE)
+RETURN NUMBER IS
+    v_id NUMBER;
+BEGIN
+    SELECT
+        r."id"
+    INTO v_id
+    FROM
+        reader_rating r
+    WHERE
+        r.reader_rating = p_param;
+RETURN v_id;
+
+EXCEPTION
+WHEN NO_DATA_FOUND THEN
+    v_id := 0;
+    RETURN v_id;
+END;
+/
+
+-------------------------------------------------------
+CREATE OR REPLACE PROCEDURE add_reader (
+/*Процедура по созданию пользователя и выдачи чит. билета.*/
+    p_readers_lastname      IN  library_card.readers_lastname%TYPE,
+    p_readers_firstname     IN  library_card.readers_firstname%TYPE,
+    p_readers_patronymic    IN  library_card.readers_patronymic%TYPE,
+    p_date_of_birth         IN  library_card.date_of_birth%TYPE,
+    p_role                  IN  roles."role"%TYPE,
+    p_reader_rating         IN  reader_rating.reader_rating%TYPE
+    )
+IS
+    v_date_of_issue_card library_card.date_of_issue_card%TYPE := sysdate();
+    v_id_reader_rating NUMBER;
+    v_id_role NUMBER;
+    
     --переменные для обработки ошибок
     e_buf_small EXCEPTION;
     PRAGMA EXCEPTION_INIT(e_buf_small, -06502);
     v_error_code NUMBER;
     v_error_message VARCHAR2(255);
-BEGIN
-    --проверка на существование роли
-    SELECT
-        COUNT(*)
-    INTO v_id_role
-    FROM
-        roles r
-    WHERE
-        r."role" = v_role;
-
-    IF v_id_role = 0 THEN
-        INSERT INTO "ROLES" ( "role" ) VALUES ( v_role ) RETURNING "id" INTO v_id_role;
+    
+BEGIN 
+-------------------------------------------------------
+    --проверка на существование и запись роли
+    IF out_id_role(p_role) = 0 THEN
+        INSERT INTO "ROLES" ( "role" ) VALUES ( p_role ) RETURNING "id" INTO v_id_role;
 
     END IF;
 -------------------------------------------------------
-    --проверка на существование рейтинга
-    SELECT
-        COUNT(*)
-    INTO v_id_reader_rating
-    FROM
-        reader_rating rr
-    WHERE
-        rr.reader_rating = v_reader_rating;
-
-    IF v_id_reader_rating = 0 THEN
-        INSERT INTO reader_rating ( reader_rating ) VALUES ( v_reader_rating ) RETURNING "id" INTO v_id_reader_rating;
+    --проверка на существование и запись рейтинга
+    IF out_id_reader_rating(p_reader_rating) = 0 THEN
+       INSERT INTO reader_rating ( reader_rating ) VALUES ( p_reader_rating ) RETURNING "id" INTO v_id_reader_rating;
 
     END IF;
 -------------------------------------------------------
@@ -54,15 +86,16 @@ BEGIN
         id_reader_rating,
         id_role
     ) VALUES (
-        v_readers_lastname,
-        v_readers_firstname,
-        v_readers_patronymic,
-        v_date_of_birth,
+        p_readers_lastname,
+        p_readers_firstname,
+        p_readers_patronymic,
+        p_date_of_birth,
         v_date_of_issue_card,
         v_id_reader_rating,
         v_id_role
     );
-    dbms_output.put_line('Читательский билет создан!!!'); 
+    dbms_output.put_line('Читательский билет создан!!!');
+    COMMIT;
 EXCEPTION
     WHEN e_buf_small THEN
         dbms_output.put_line('Буфер переменной слишком мал!!!'); 
@@ -73,11 +106,17 @@ EXCEPTION
         dbms_output.put_line('Код ошибки - '|| v_error_code);
         dbms_output.put_line('Сщщбщение: '|| v_error_message);
 END;
+/
+-------------------------------------------------------
 
+BEGIN
+add_reader (
+    p_readers_lastname => 'Петров',
+    p_readers_firstname => 'Андрей',
+    p_readers_patronymic => 'Викторович',
+    p_date_of_birth => to_date('25.09.1989', 'dd.mm.yyyy'),
+    p_role => 'Клиент',
+    p_reader_rating => 3
+);
 
-
-
-
-
-
-
+END;
