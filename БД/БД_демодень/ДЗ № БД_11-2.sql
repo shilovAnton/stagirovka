@@ -1,61 +1,106 @@
+-- типы массивов
+CREATE OR REPLACE TYPE id_array IS
+VARRAY (20) OF NUMBER;
+
+CREATE OR REPLACE TYPE varchar_array IS
+VARRAY (20) OF VARCHAR2(60 CHAR);
+
+CREATE OR REPLACE TYPE authorsarray IS
+VARRAY (10) OF varchar_array;
+
+-------------------------------------------------------
+CREATE OR REPLACE FUNCTION out_id_book_type 
+    (p_param IN book_type.book_type%TYPE)
+RETURN NUMBER IS
+    v_id NUMBER;
+BEGIN
+    SELECT
+        bt."id"
+    INTO v_id
+    FROM
+        book_type bt
+    WHERE
+        bt.book_type = p_param;
+RETURN v_id;
+
+EXCEPTION
+WHEN NO_DATA_FOUND THEN
+    v_id := 0;
+    RETURN v_id;
+END;
+/
+
+CREATE OR REPLACE FUNCTION out_id_age_limit
+    (p_param IN age_limit.age_limit%TYPE)
+RETURN NUMBER IS
+    v_id NUMBER;
+BEGIN
+    SELECT
+        a."id"
+    INTO v_id
+    FROM
+        age_limit a
+    WHERE
+        a.age_limit = p_param;
+RETURN v_id;
+
+EXCEPTION
+WHEN NO_DATA_FOUND THEN
+    v_id := 0;
+    RETURN v_id;
+END;
+/
+
+CREATE OR REPLACE FUNCTION out_id_publishing_house
+    (p_param IN publishing_house.publishing_house%TYPE)
+RETURN NUMBER IS
+    v_id NUMBER;
+BEGIN
+    SELECT
+        ph."id"
+    INTO v_id
+    FROM
+        publishing_house ph
+    WHERE
+        ph.publishing_house = p_param;
+RETURN v_id;
+
+EXCEPTION
+WHEN NO_DATA_FOUND THEN
+    v_id := 0;
+    RETURN v_id;
+END;
+/
+
+-------------------------------------------------------
 CREATE OR REPLACE PROCEDURE add_book (
-/*Создаем метод по созданию новой книги (новый автор, новое издание)*/
-    p_name_book VARCHAR2(100 CHAR) := 'Капитал';
-    p_tom NUMBER;
-    p_book_type VARCHAR2(60 CHAR) := 'Книга';
-    p_age_limit NUMBER := 12;
-    p_publishing_house VARCHAR2(60 CHAR) := 'Просвещение';
-    p_year_of_publishing DATE := '01.01.1998';
-    p_price NUMBER := 2500;
+/*создание новой книги*/
 
+    --массив жанров
+    p_genres IN varchar_array,
+    --массив тегов
+    p_tags IN varchar_array,
+    --массив авторов
+    p_authors IN authorsarray,
 
-    p_readers_lastname      IN  library_card.readers_lastname%TYPE,
-    p_readers_firstname     IN  library_card.readers_firstname%TYPE,
-    p_readers_patronymic    IN  library_card.readers_patronymic%TYPE,
-    p_date_of_birth         IN  library_card.date_of_birth%TYPE,
-    p_role                  IN  roles."role"%TYPE,
-    p_reader_rating         IN  reader_rating.reader_rating%TYPE
+    p_name_book IN books.name_book%TYPE,
+    p_tom IN books.tom%TYPE,
+    p_book_type IN books.id_book_type%TYPE,
+    p_age_limit IN books.id_age_limit%TYPE,
+    p_publishing_house IN books.id_publishing_house%TYPE,
+    p_year_of_publishing IN books.year_of_publishing%TYPE,
+    p_price IN books.price%TYPE,
+    p_count_book NUMBER
     )
 IS
-    v_date_of_issue_card library_card.date_of_issue_card%TYPE := sysdate();
-    v_id_reader_rating NUMBER;
-    v_id_role NUMBER;
-    
-    --переменные для обработки ошибок
-    e_buf_small EXCEPTION;
-    PRAGMA EXCEPTION_INIT(e_buf_small, -06502);
-    v_error_code NUMBER;
-    v_error_message VARCHAR2(255);
-
-
-
-
-DECLARE
-/*Создаем метод по созданию новой книги (новый автор, новое издание)*/
-
-
-    --создаём общие типы массивов
-    type varchar_array IS VARRAY(20) OF VARCHAR2(60 CHAR);
-    type id_array IS VARRAY(20) OF NUMBER;
-    --массив жанров
-    v_genres varchar_array := varchar_array('Научно популярный', 'Наука');
-    --массив тегов
-    v_tags varchar_array := varchar_array('Капитализм', 'Коммунизм', 'Мировое зло');
-    --массив авторов
-    type authorsarray IS VARRAY(10) OF varchar_array;
-    v_authors authorsarray := authorsarray(varchar_array('Маркс', 'Карл', NULL), varchar_array('Пушкин', 'Александр', 'Сергеевич'));
-    --массивы для сбора id
-    v_id_genres id_array := id_array();
-    v_id_tags id_array := id_array();
-    v_id_authors id_array := id_array();
-    
-    --количество книг
-    v_count_book NUMBER := 12;
     v_id_book NUMBER;
-
     v_id_book_type NUMBER;
     v_id_age_limit NUMBER;
     v_id_publishing_house NUMBER;
+
+    v_id_genres id_array := id_array();
+    v_id_tags id_array := id_array();
+    v_id_authors id_array := id_array();
     
     --переменные для обработки ошибок
     e_buf_small EXCEPTION;
@@ -63,50 +108,26 @@ DECLARE
     v_error_code NUMBER;
     v_error_message VARCHAR2(255);
 BEGIN
-    --проверка на существование типа
-    SELECT
-        COUNT(*)
-    INTO v_id_book_type
-    FROM
-        book_type bt
-    WHERE
-        bt.book_type = v_book_type;
-    --если такого типа нет делаем запись
-    IF v_id_book_type = 0 THEN
-        INSERT INTO book_type ( book_type ) VALUES ( v_book_type ) RETURNING "id" INTO v_id_book_type;
+-------------------------------------------------------
+    IF out_id_book_type(p_book_type) = 0 THEN
+        INSERT INTO book_type ( book_type ) VALUES ( p_book_type ) RETURNING "id" INTO v_id_book_type;
 
     END IF;
 -------------------------------------------------------
     --проверка на существование возрастного ораничения
-    SELECT
-        COUNT(*)
-    INTO v_id_age_limit
-    FROM
-        age_limit al
-    WHERE
-        al.age_limit = v_age_limit;
-    --если нет делаем запись
-    IF v_id_age_limit = 0 THEN
-        INSERT INTO age_limit ( age_limit ) VALUES ( v_age_limit ) RETURNING "id" INTO v_id_age_limit;
+    IF out_id_age_limit(p_age_limit) = 0 THEN
+        INSERT INTO age_limit ( age_limit ) VALUES ( p_age_limit ) RETURNING "id" INTO v_id_age_limit;
 
     END IF;
 -------------------------------------------------------
     --проверка на существование издательства
-    SELECT
-        COUNT(*)
-    INTO v_id_publishing_house
-    FROM
-        publishing_house ph
-    WHERE
-        ph.publishing_house = v_publishing_house;
-    --если нет делаем запись
-    IF v_id_publishing_house = 0 THEN
-        INSERT INTO publishing_house ( publishing_house ) VALUES ( v_publishing_house ) RETURNING "id" INTO v_id_publishing_house;
+    IF out_id_publishing_house(p_publishing_house) = 0 THEN
+        INSERT INTO publishing_house ( publishing_house ) VALUES ( p_publishing_house ) RETURNING "id" INTO v_id_publishing_house;
 
     END IF;
 -------------------------------------------------------
     --проверка на существование и запись тегов
-    FOR i IN 1..v_tags.count LOOP
+    FOR i IN 1..p_tags.count LOOP
         v_id_tags.extend;
         SELECT
             COUNT(*)
@@ -114,16 +135,24 @@ BEGIN
         FROM
             tags t
         WHERE
-            t.tag = v_tags(i);
+            t.tag = p_tags(i);
         --если нет делаем запись
         IF v_id_tags(i) = 0 THEN
-            INSERT INTO tags ( tag ) VALUES ( v_tags(i) ) RETURNING "id" INTO v_id_tags(i);
+            INSERT INTO tags ( tag ) VALUES ( p_tags(i) ) RETURNING "id" INTO v_id_tags(i);
     
         END IF;
+        --достаём id
+        SELECT
+            t."id"
+        INTO v_id_tags(i)
+        FROM
+            tags t
+        WHERE
+            t.tag = p_tags(i);
     END LOOP;
 -------------------------------------------------------
     --проверка на существование и запись жанров
-    FOR i IN 1..v_genres.count LOOP
+    FOR i IN 1..p_genres.count LOOP
         v_id_genres.extend();
         SELECT
             COUNT(*)
@@ -131,12 +160,20 @@ BEGIN
         FROM
             genres g
         WHERE
-            g.genre = v_genres(i);
+            g.genre = p_genres(i);
         --если нет делаем запись
         IF v_id_genres(i) = 0 THEN
-            INSERT INTO genres ( genre ) VALUES ( v_genres(i) ) RETURNING "id" INTO v_id_genres(i);
+            INSERT INTO genres ( genre ) VALUES ( p_genres(i) ) RETURNING "id" INTO v_id_genres(i);
     
         END IF;
+        --достаём id
+        SELECT
+            g."id"
+        INTO v_id_genres(i)
+        FROM
+            genres g
+        WHERE
+            g.genre = p_genres(i);
     END LOOP;
 -------------------------------------------------------
     --проверка на существование автора
@@ -148,7 +185,7 @@ BEGIN
         FROM
             author a
         WHERE
-            a.author_lastname||a.author_firstname = v_authors(i)(1) || v_authors(i)(2);
+            a.author_lastname||a.author_firstname = p_authors(i)(1) || p_authors(i)(2);
     --если нет делаем запись
        IF v_id_authors(i) = 0 THEN
        
@@ -163,8 +200,15 @@ BEGIN
             ) RETURNING "id" INTO v_id_authors(i);
         
         END IF;
-
-    END LOOP;  
+        --достаём id
+        SELECT
+            a."id"
+        INTO v_id_authors(i)
+        FROM
+            author a
+        WHERE
+            a.author_lastname||a.author_firstname = p_authors(i)(1) || p_authors(i)(2);
+    END LOOP;
 -------------------------------------------------------
 --запись новой книги
     INSERT INTO books (
@@ -176,18 +220,18 @@ BEGIN
         YEAR_OF_PUBLISHING,
         PRICE
     ) VALUES (
-        v_name_book,
-        v_tom,
+        p_name_book,
+        p_tom,
         v_id_book_type,
         v_id_age_limit,
         v_id_publishing_house,
-        v_year_of_publishing,
-        v_price
+        p_year_of_publishing,
+        p_price
     ) RETURNING  "id" INTO v_id_book;
 -------------------------------------------------------
     --заполняем склад партией книг
-    FOR i IN 1..v_count_book LOOP
-        INSERT INTO inventory_number ( id_book ) VALUES ( v_id_book );
+    FOR i IN 1..p_count_book LOOP
+        INSERT INTO inventory_number ( id_book ) VALUES ( p_id_book );
     
     END LOOP;
 -------------------------------------------------------
@@ -211,7 +255,7 @@ BEGIN
 -------------------------------------------------------
     COMMIT;
 
-    dbms_output.put_line ('Книга "'||v_name_book||'" добавлена в базу!');
+    dbms_output.put_line ('Книга "' || p_name_book || '" добавлена в базу!');
 EXCEPTION
     WHEN e_buf_small THEN
         dbms_output.put_line('Буфер переменной слишком мал!!!'); 
@@ -223,17 +267,25 @@ EXCEPTION
         dbms_output.put_line('Сщщбщение: '|| v_error_message);
 END;
 
+--------------------------------------------------------------------
+--------------------------------------------------------------------
 
+BEGIN
+add_book (
+    p_genres => varchar_array('Научно популярный', 'Наука'),
+    p_tags => varchar_array('Капитализм', 'Коммунизм', 'Мировое зло'),
+    p_authors => authorsarray(varchar_array('Маркс', 'Карл', NULL), varchar_array('Пушкин', 'Александр', 'Сергеевич')),
+    p_name_book => 'Капитал',
+    p_tom NULL,             --нужно проверить!!!
+    p_book_type => 'Книга',
+    p_age_limit => 12,
+    p_publishing_house => 'Просвещение',
+    p_year_of_publishing => '01.01.1998',
+    p_price => 2500,
+    p_count_book => 12
+);
 
-
-    v_name_book VARCHAR2(100 CHAR) := 'Капитал';
-    v_tom NUMBER;
-    v_book_type VARCHAR2(60 CHAR) := 'Книга';
-    v_age_limit NUMBER := 12;
-    v_publishing_house VARCHAR2(60 CHAR) := 'Просвещение';
-    v_year_of_publishing DATE := '01.01.1998';
-    v_price NUMBER := 2500;
-
+END;
 
 
 

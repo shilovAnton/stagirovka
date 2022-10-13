@@ -65,6 +65,7 @@ IS
     
 BEGIN 
 -------------------------------------------------------
+-------------------------------------------------------
     --проверка на существование и запись роли
     IF out_id_role(p_role) = 0 THEN
         INSERT INTO "ROLES" ( "role" ) VALUES ( p_role ) RETURNING "id" INTO v_id_role;
