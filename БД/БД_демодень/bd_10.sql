@@ -178,7 +178,7 @@ COMMENT ON COLUMN service_category.service_category IS
 CREATE TABLE age_limit (
     "id"      NUMBER
         GENERATED AS IDENTITY,
-    age_limit VARCHAR2(60 CHAR) NOT NULL UNIQUE,
+    age_limit NUMBER NOT NULL UNIQUE,
     CONSTRAINT age_limit PRIMARY KEY ( "id" )
 );
 
