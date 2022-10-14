@@ -78,13 +78,15 @@ CREATE OR REPLACE PACKAGE BODY add_reader_package IS
         --проверка на существование и запись роли
         IF out_id_role(p_role) = 0 THEN
             INSERT INTO "ROLES" ( "role" ) VALUES ( p_role ) RETURNING "id" INTO v_id_role;
-
+        ELSE
+            v_id_role := out_id_role(p_role);
         END IF;
         -------------------------------------------------------
         --проверка на существование и запись рейтинга
         IF out_id_reader_rating(p_reader_rating) = 0 THEN
-        INSERT INTO reader_rating ( reader_rating ) VALUES ( p_reader_rating ) RETURNING "id" INTO v_id_reader_rating;
-
+            INSERT INTO reader_rating ( reader_rating ) VALUES ( p_reader_rating ) RETURNING "id" INTO v_id_reader_rating;
+        ELSE
+            v_id_reader_rating := out_id_reader_rating(p_reader_rating);
         END IF;
         -------------------------------------------------------
         INSERT INTO library_card (

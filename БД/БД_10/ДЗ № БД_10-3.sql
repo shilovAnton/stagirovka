@@ -1,16 +1,14 @@
-DECLARE
 /*Создаем метод по проверке может ли читатель взять книгу (кейсы: плохой рейтинг у читателя,
 читатель уже взял эту книгу, книга не подходит по возрасту и т.д.) */
-
+CREATE OR REPLACE PROCEDURE check_reader (
     --переменные для выбора книги (параметры для поиска книги)
-    v_name_book books.name_book%TYPE := 'Война и мир';
-    v_author_lastname author.author_lastname%TYPE := 'Толстой';
-    v_tom books.tom%TYPE := 1;
-    v_publishing_house publishing_house.publishing_house%TYPE := 'Эксмо';
-
+    p_name_book IN books.name_book%TYPE,
+    p_author_lastname IN author.author_lastname%TYPE,
+    p_tom IN books.tom%TYPE,
+    p_publishing_house IN publishing_house.publishing_house%TYPE,
     --переменная для читателя
-    v_id_reader library_card."id"%TYPE := 11;
-
+    p_id_reader IN library_card."id"%TYPE)
+IS
     --переменная есть ли эта книга у читителя на руках
     book_in_hand NUMBER := 0;
     --чичло просроченных книг
@@ -43,9 +41,9 @@ DECLARE
             LEFT OUTER JOIN publishing_house ph ON b.id_publishing_house = ph."id"
             LEFT OUTER JOIN book_type bt        ON bt."id" = b.id_book_type
         GROUP BY i.id_book, b.name_book, b.tom, ag.age_limit, bt.book_type, b."id", ph.publishing_house
-        HAVING name_book = v_name_book and tom = v_tom 
-        and publishing_house = v_publishing_house 
-        and LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||' '|| a.author_patronymic), ', ') LIKE '%'||v_author_lastname||'%';
+        HAVING name_book = p_name_book and tom = p_tom 
+        and publishing_house = p_publishing_house 
+        and LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||' '|| a.author_patronymic), ', ') LIKE '%'||p_author_lastname||'%';
 
     --переменная для строки курсора выборки книги
     v_current_book cursor_book%ROWTYPE;
@@ -176,5 +174,4 @@ BEGIN
         ELSE
             DBMS_OUTPUT.PUT_LINE('КНИГУ НЕЛЬЗЯ ВЫДАТЬ!!!');
         END IF;
-        
 END;

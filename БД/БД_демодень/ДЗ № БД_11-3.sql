@@ -1,19 +1,17 @@
-DECLARE
 /*Создаем метод по проверке может ли читатель взять книгу (кейсы: плохой рейтинг у читателя,
 читатель уже взял эту книгу, книга не подходит по возрасту и т.д.) */
-
+CREATE OR REPLACE PROCEDURE check_reader (
     --переменные для выбора книги (параметры для поиска книги)
-    v_name_book books.name_book%TYPE := 'Война и мир';
-    v_author_lastname author.author_lastname%TYPE := 'Толстой';
-    v_tom books.tom%TYPE := 1;
-    v_publishing_house publishing_house.publishing_house%TYPE := 'Родина';
-
+    p_name_book IN books.name_book%TYPE,
+    p_author_lastname IN author.author_lastname%TYPE,
+    p_tom IN books.tom%TYPE,
+    p_publishing_house IN publishing_house.publishing_house%TYPE,
     --переменная для читателя
-    v_id_reader library_card."id"%TYPE := 11;
-
+    p_id_reader IN library_card."id"%TYPE)
+IS
     --переменная есть ли эта книга у читителя на руках
     book_in_hand NUMBER := 0;
-    --число просроченных книг
+    --чичло просроченных книг
     count_book_foul NUMBER := 0;
     --переменная есть ли ошибки
     error NUMBER := 0;
@@ -43,51 +41,48 @@ DECLARE
             LEFT OUTER JOIN publishing_house ph ON b.id_publishing_house = ph."id"
             LEFT OUTER JOIN book_type bt        ON bt."id" = b.id_book_type
         GROUP BY i.id_book, b.name_book, b.tom, ag.age_limit, bt.book_type, b."id", ph.publishing_house
-        HAVING name_book = v_name_book and tom = v_tom 
-        and publishing_house = v_publishing_house 
-        and LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||' '|| a.author_patronymic), ', ') LIKE '%'||v_author_lastname||'%';
+        HAVING name_book = p_name_book and tom = p_tom 
+        and publishing_house = p_publishing_house 
+        and LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||' '|| a.author_patronymic), ', ') LIKE '%'||p_author_lastname||'%';
 
     --переменная для строки курсора выборки книги
     v_current_book cursor_book%ROWTYPE;
 
-    ---------------------------------------------------------------------------------
-    --динамический SQL
-    --переменная запроса
-    v_stnt VARCHAR2(200);
+    --создание курсора читателя
+    CURSOR cursor_reader IS
+        SELECT
+            lc."id",
+            LC.READERS_LASTNAME,
+            LC.READERS_FIRSTNAME,
+            LC.READERS_PATRONYMIC,
+            LC.DATE_OF_ISSUE_CARD,
+            LC.SUM_FINES,
+            RR.READER_RATING,
+            LC.CLOSING_DATE,
+            ROUND((SYSDATE  - lc.date_of_birth)/365) as age_readers
+        FROM
+            library_card lc
+            LEFT OUTER JOIN reader_rating rr ON rr."id" = lc.id_reader_rating
+        WHERE
+            lc."id" = p_id_reader;
+
     --переменная для строки курсора выборки читателя
-    v_reader LIBRARY_CARD%ROWTYPE;
-    -----------------------------------------------------------------------------------------------------
-    --переменные для обработки ошибок
-    e_buf_small EXCEPTION;
-    PRAGMA EXCEPTION_INIT(e_buf_small, -06502);
-    v_error_code NUMBER;
-    v_error_message VARCHAR2(255);
-    
-    --переменная возраста читателя
-    age_readers NUMBER;
+    v_reader cursor_reader%ROWTYPE;
 BEGIN
-    -------------------------------------------------------
-    --блок динамического SQL
-    v_stnt :=   'SELECT
-                    *
-                FROM
-                    library_card
-                WHERE
-                    "id" = :v_id_reader';
-                    
-    EXECUTE IMMEDIATE v_stnt
-    INTO v_reader
-    USING v_id_reader;
-    
-    age_readers := ROUND((SYSDATE  - v_reader.date_of_birth)/365);
-    -------------------------------------------------------
+-------------------------------------------------------
+    OPEN cursor_reader;
+    LOOP 
+        FETCH cursor_reader INTO v_reader;
+        EXIT WHEN cursor_reader%NOTFOUND;
         DBMS_OUTPUT.PUT_LINE('=======================================================');
         DBMS_OUTPUT.PUT_LINE('Читатель: '||v_reader.readers_lastname||' '||v_reader.readers_firstname||' '||v_reader.readers_patronymic);
-        DBMS_OUTPUT.PUT_LINE('Рейтинг читателя: '||v_reader.id_reader_rating);
-        DBMS_OUTPUT.PUT_LINE('Возраст читателя: '||age_readers);
+        DBMS_OUTPUT.PUT_LINE('Рейтинг читателя: '||v_reader.reader_rating);
+        DBMS_OUTPUT.PUT_LINE('Возраст читателя: '||v_reader.age_readers);
         DBMS_OUTPUT.PUT_LINE('Сумма штрафов: '||v_reader.sum_fines);
         DBMS_OUTPUT.PUT_LINE('Дата создания читательского билета: '||TO_CHAR(v_reader.date_of_issue_card, 'dd.mm.yyyy'));
-    -------------------------------------------------------
+    END LOOP;
+    CLOSE cursor_reader;
+-------------------------------------------------------
     OPEN cursor_book;
     LOOP
         FETCH cursor_book INTO v_current_book;
@@ -114,14 +109,14 @@ BEGIN
             error_subscript := 1;
         END IF;
         --проверка на возрастное ограничение
-        IF age_readers >= v_current_book.age_limit THEN
+        IF v_reader.age_readers >= v_current_book.age_limit THEN
             DBMS_OUTPUT.PUT_LINE('Читатель проходит по возрастному ограничению - Ok');
         ELSE
             DBMS_OUTPUT.PUT_LINE('Читатель НЕ проходит по возрастному ограничению - No!!!');
             error := 1;
         END IF;
         --проверка на рейтинг
-        IF v_reader.id_reader_rating >= 3 THEN
+        IF v_reader.reader_rating >= 3 THEN
             DBMS_OUTPUT.PUT_LINE('Читатель проходит по рейтингу - Ok');
         ELSE
             DBMS_OUTPUT.PUT_LINE('Читатель НЕ проходит по рейтингу - No!!!');
@@ -179,13 +174,16 @@ BEGIN
         ELSE
             DBMS_OUTPUT.PUT_LINE('КНИГУ НЕЛЬЗЯ ВЫДАТЬ!!!');
         END IF;
-EXCEPTION
-    WHEN e_buf_small THEN
-        dbms_output.put_line('Буфер переменной слишком мал!!!'); 
-    WHEN OTHERS THEN
-        v_error_code := SQLCODE;
-        v_error_message := SQLERRM;    
-        dbms_output.put_line('Что-то пошло не так!!!');
-        dbms_output.put_line('Код ошибки - '|| v_error_code);
-        dbms_output.put_line('Сщщбщение: '|| v_error_message);
 END;
+/
+
+BEGIN
+    check_reader (
+    p_name_book => 'Война и мир',
+    p_author_lastname => 'Толстой',
+    p_tom => 1,
+    p_publishing_house => 'Эксмо',
+    --переменная для читателя
+    p_id_reader => 11);
+END;
+/

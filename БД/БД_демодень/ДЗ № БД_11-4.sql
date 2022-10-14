@@ -1,11 +1,10 @@
-DECLARE
+CREATE OR REPLACE PROCEDURE out_book (
 /*Создаем метод по выдачи книги читателю (абонемент)*/
-
     --вводные данные
-    v_id_inventory_number NUMBER := 100;
-    v_id_reader NUMBER := 15;
-    v_service_category SERVICE_CATEGORY.SERVICE_CATEGORY%TYPE := 'Абонемент';
-
+    v_id_inventory_number IN NUMBER,
+    v_id_reader IN NUMBER,
+    v_service_category IN SERVICE_CATEGORY.SERVICE_CATEGORY%TYPE)
+IS
     --переменная есть ли эта книга у читителя на руках
     book_in_hand NUMBER := 0;
     --чичло просроченных книг
@@ -254,4 +253,12 @@ EXCEPTION
         dbms_output.put_line('Что-то пошло не так!!!');
         dbms_output.put_line('Код ошибки - '|| v_error_code);
         dbms_output.put_line('Сщщбщение: '|| v_error_message);
+END;
+/
+
+BEGIN
+ out_book (
+    v_id_inventory_number => 100,
+    v_id_reader => 15,
+    v_service_category => 'Абонемент');
 END;

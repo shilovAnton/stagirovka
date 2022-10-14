@@ -121,17 +121,20 @@ CREATE OR REPLACE PACKAGE BODY add_book_package IS
     BEGIN
         IF out_id_book_type(p_book_type) = 0 THEN
             INSERT INTO book_type ( book_type ) VALUES ( p_book_type ) RETURNING "id" INTO v_id_book_type;
-
+        ELSE
+            v_id_book_type := out_id_book_type(p_book_type);
         END IF;
         --проверка на существование возрастного ораничения
         IF out_id_age_limit(p_age_limit) = 0 THEN
             INSERT INTO age_limit ( age_limit ) VALUES ( p_age_limit ) RETURNING "id" INTO v_id_age_limit;
-
+        ELSE
+            v_id_age_limit := out_id_age_limit(p_age_limit);
         END IF;
         --проверка на существование издательства
         IF out_id_publishing_house(p_publishing_house) = 0 THEN
             INSERT INTO publishing_house ( publishing_house ) VALUES ( p_publishing_house ) RETURNING "id" INTO v_id_publishing_house;
-
+        ELSE
+            v_id_publishing_house := out_id_publishing_house(p_publishing_house);
         END IF;
         --проверка на существование и запись тегов
         FOR i IN 1..p_tags.count LOOP
@@ -232,6 +235,7 @@ CREATE OR REPLACE PACKAGE BODY add_book_package IS
             p_year_of_publishing,
             p_price
         ) RETURNING  "id" INTO v_id_book;
+        dbms_output.put_line(out_id_book_type(v_id_book)); 
         --заполняем склад партией книг
         FOR i IN 1..p_count_book LOOP
             INSERT INTO inventory_number ( id_book ) VALUES ( v_id_book );
@@ -270,17 +274,17 @@ END add_book_package;
 --------------------------------------------------------------------
 BEGIN
 add_book_package.add_book (
-    p_genres => add_book_package.varchar_array('Научно популярный', 'Наука'),
+    p_genres => add_book_package.varchar_array('Научно популярный', 'sdfdvv'),
     p_tags => add_book_package.varchar_array('Капитализм', 'Коммунизм', 'Мировое зло'),
-    p_authors => add_book_package.authorsarray(add_book_package.varchar_array('Маркс', 'Карл', NULL), add_book_package.varchar_array('Пушкин', 'Александр', 'Сергеевич')),
+    p_authors => add_book_package.authorsarray (add_book_package.varchar_array('Маркс', 'Карл', NULL), add_book_package.varchar_array('Пушкин', 'Александр', 'Сергеевич')),
     p_name_book => 'Капитал',
     p_tom => NULL,            
-    p_book_type => 'Книга',
+    p_book_type => 'Клиент',
     p_age_limit => 12,
     p_publishing_house => 'Просвещение',
     p_year_of_publishing => to_date('01.01.1998', 'dd.mm.yyyy'),
     p_price => 2500,
-    p_count_book => 12
+    p_count_book => 7
 );
 
 END;
