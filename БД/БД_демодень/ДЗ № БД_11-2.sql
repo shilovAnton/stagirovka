@@ -1,3 +1,9 @@
+/*
+
+Пакет - добавление новой книги
+
+*/
+
 CREATE OR REPLACE PACKAGE add_book_package IS
     /*создание новой книги*/
     

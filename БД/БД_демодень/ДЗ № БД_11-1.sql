@@ -1,4 +1,4 @@
-/*Процедура по созданию пользователя и выдачи чит. билета.*/
+/*Паккет по созданию пользователя и выдачи чит. билета.*/
 CREATE OR REPLACE PACKAGE add_reader_package IS
     PROCEDURE add_reader (
         p_readers_lastname      IN  library_card.readers_lastname%TYPE,
@@ -133,3 +133,4 @@ add_reader_package.add_reader (
 );
 
 END;
+/

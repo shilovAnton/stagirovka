@@ -1,9 +1,8 @@
-DECLARE
 /*Создаем метод, возвращающий отчет об инвентаризации в разрезе каждой книги 
 (Когда поступила на склад, когда и кто её брал и вернул, когда была утрачена)*/
-
-    v_id_inventory_number NUMBER := 100;
-    
+CREATE OR REPLACE PROCEDURE books_inventory (
+    v_id_inventory_number NUMBER := 100)
+IS
     rc sys_refcursor;
     book sys_refcursor;
 
@@ -20,8 +19,8 @@ BEGIN
             b.name_book,
             LISTAGG(DISTINCT (a.author_lastname||' '||a.author_firstname||' '|| a.author_patronymic), ', ') AS author,
             ph.publishing_house,
-            i.ARRIVAL_BOOK as "прибыла в библиотеку",
-            i.WRITE_OFF_DATE_BOOK as "дата списания"
+            i.ARRIVAL_BOOK as "in_lib",
+            i.WRITE_OFF_DATE_BOOK as "out_lib"
         FROM
             INVENTORY_NUMBER i
             LEFT OUTER JOIN books b             ON b."id" = i.id_book
@@ -60,5 +59,8 @@ EXCEPTION
         dbms_output.put_line('Код ошибки - '|| v_error_code);
         dbms_output.put_line('Сщщбщение: '|| v_error_message);
 END;
+/
 
-
+BEGIN
+    books_inventory (v_id_inventory_number => 100);
+END;

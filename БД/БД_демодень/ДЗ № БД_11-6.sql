@@ -1,7 +1,8 @@
-DECLARE
-/*Создаем метод, возвращающий таблицу выданных книг за определенный день*/
 
-    v_parametr_date DATE := ROUND(SYSDATE);
+/*Создаем метод, возвращающий таблицу выданных книг за определенный день*/
+CREATE OR REPLACE PROCEDURE table_book_out_in_one_day (
+    v_parametr_date IN DATE)
+IS
     rc sys_refcursor;
 
     --переменные для обработки ошибок
@@ -50,3 +51,11 @@ EXCEPTION
         dbms_output.put_line('Код ошибки - '|| v_error_code);
         dbms_output.put_line('Сщщбщение: '|| v_error_message);
 END;
+/
+
+/* процедура возвращающяя таблицу выданных книг за определенный день*/
+BEGIN
+    table_book_out_in_one_day (v_parametr_date => ROUND(SYSDATE));
+END;
+
+
