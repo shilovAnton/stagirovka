@@ -1,0 +1,38 @@
+@startuml
+title Создание заказа доставки
+
+actor "Адм. доставки" as A
+
+activate A
+A -> SPA: Создай заказ доставки
+
+activate SPA
+SPA -> API: Держи данные заказа доставки
+activate API
+
+database DataBase
+API -> DataBase: Сделай запись заказа доставки
+activate DataBase
+API <-- DataBase: Получи id заказа доставки
+
+deactivate DataBase
+
+
+'-----------------------------------------
+note right of API: This is displayed right of Alice.
+API -> "Модуль заказы"
+
+activate "Модуль заказы"
+
+
+
+
+'-----------------------------------------
+API --> SPA: Данные созданного заказа доставки
+deactivate API
+
+SPA --> A: Заказ доставки успешно создан
+deactivate SPA
+deactivate A
+
+@enduml
