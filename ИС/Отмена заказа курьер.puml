@@ -1,0 +1,24 @@
+@startuml
+
+autonumber
+Actor "Курьер" as K 
+participant SPA
+participant API
+database DataBase as db
+
+activate K
+K -> SPA: Изменить статус заказа (заказ выполнен)
+activate SPA
+SPA -> API: Выполнить изменение статуса
+activate API
+API -> db: Сохранить измененный статус заказа
+activate db
+db-> API: Данные успешно сохранены
+deactivate db
+API -> SPA: Сообщить об изменении данных
+deactivate API 
+SPA -> K: Заказ выполнен
+deactivate SPA
+deactivate K
+
+@enduml

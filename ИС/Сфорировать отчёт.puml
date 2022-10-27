@@ -1,0 +1,24 @@
+@startuml
+
+autonumber
+actor "Адм. доставки" as A
+participant SPA
+participant API
+database DataBase
+
+activate A
+A -> SPA: Сформируй отчёт заказов доставки
+activate SPA
+SPA -> API: Сформируй отчёт
+activate API
+API -> DataBase: Дай мне данные о заказах доставки
+activate DataBase
+API <-- DataBase: Получи данные о заказах доставки
+deactivate DataBase
+API --> SPA: Вот тебе отчёт о доставках
+deactivate API
+SPA --> A: Получи отчёт
+deactivate SPA
+deactivate A
+
+@enduml

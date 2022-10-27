@@ -1,5 +1,4 @@
 @startuml
-title: Создание заказа доставки
 
 autonumber
 actor "Адм. доставки" as ADM
@@ -8,10 +7,15 @@ participant API
 database DataBase as db
 participant "Модуль\n'Заказы'" as ORD #aqua
 participant "Справочник\n'DaData'" as DD #99FF99
+participant "Модуль\n'Расписание работы\nсотрудников и \nрасчет зарплаты'" as A #aqua
 
 activate ADM
 ADM -> SPA: Создать заказ доставки
 activate SPA
+SPA -> API: Дай форму для заполнения \nданными клиента
+activate API
+SPA <-- API: Держи форму для заполнения
+deactivate API
 SPA --> ADM: Заполни форму \nданными о клиенте
 deactivate SPA
 ADM -> SPA: Получи телефон клиента
@@ -31,8 +35,10 @@ end
 ADM -> SPA: Получи адрес клиента
 SPA -> DD: Проверь адрес на существование по справочнику
 activate DD #99FF99
-DD --> SPA: Получи совпадения из справочника
+DD --> SPA: Данные из справочника
 deactivate DD
+SPA --> ADM: Получи совпадения адресов
+
 
 ADM -> SPA: Подтверждаю данные \nи отправляю форму
 SPA -> API: Вот данные клиента
@@ -47,10 +53,10 @@ activate db
 alt Если пакет заказов НЕ ОТКРЫТ!!!
     db --> API: Нет открытого пакета заказов
     deactivate db
-    API -> ORD: Дай мне список курьеров в этом ресторане
-    activate ORD
-    API <-- ORD: Сегодня на смене эти курьеры
-    deactivate ORD
+    API -> A: Дай мне список курьеров в этом ресторане
+    activate A #aqua
+    API <-- A: Сегодня на смене эти курьеры
+    deactivate A
     API -> db: Дай мне данные о загруженности \nэтих курьеров
     activate db
     db --> API: Получи данные о курьерах
@@ -81,9 +87,8 @@ API <-- db: Получи все данные о заказе
 deactivate db
 API --> SPA: Получи данные о заказе
 deactivate API
-SPA--> ADM: Вот новый сформированный заказ доставки
+SPA--> ADM: Вот новый сформированный \nзаказ доставки
 deactivate SPA
 deactivate ADM
-
 
 @enduml

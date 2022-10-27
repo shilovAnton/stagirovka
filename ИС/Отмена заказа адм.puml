@@ -1,0 +1,33 @@
+@startuml
+
+autonumber
+actor "Адм. доставки" as ADM
+participant SPA
+participant API
+database DataBase as db
+participant "Модуль\n'Заказы'" as ORD #aqua
+
+activate ADM
+ADM -> SPA: Отменить заказа доставки
+activate SPA
+SPA -> API: Отменить заказа доставки
+activate API
+API -> db: Дай мне статус у заказа
+activate db
+API <-- db: Держи статус заказа
+deactivate db
+alt Если статус заказа "в ресторане"
+    API -> ORD: Отмени заказ
+    activate ORD
+    API <-- ORD: Заказ отменён
+    deactivate ORD
+end
+API -> db: Обнови статус заказа
+activate db
+API <-- db: Ок
+deactivate db
+API --> SPA: Держи новый статус
+deactivate API
+ADM <-- SPA: Заказ отменён
+deactivate SPA
+@enduml

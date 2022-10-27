@@ -1,0 +1,31 @@
+@startuml
+
+autonumber
+actor "Адм. доставки" as ADM
+participant SPA
+participant API
+database DataBase as db
+participant "Модуль\n'Заказы'" as ORD #aqua
+
+activate ADM
+activate API
+note right of API: Запускается автоматически \nпо таймеру
+API -> db: Дай мне id заказов, у которых \nстатус "в ресторане"
+activate db
+API <-- db: Держи id заказов
+deactivate db
+API -> ORD: Дай мне статусы заказов \nс этим id
+activate ORD #aqua
+API <-- ORD: Держи статусы заказов
+deactivate ORD
+API -> db: Обнови статусы
+activate db
+API <-- db: Получи обновлённые \nстатусы заказов
+deactivate db
+API --> SPA: Получи данные о заказах
+deactivate API
+activate SPA
+ADM <-- SPA: Вот новые статусы заказов
+deactivate SPA
+
+@enduml
