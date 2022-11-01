@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        /**
+         * Проверяет вводимое значение.
+         * 
+         * @param {string} mesege Сообщение пользователю.
+         * 
+         * @return {number} num Возвращает проверенное значение.
+        */
+        function chekNumber(message) {
+            let num;
+            do {
+                num = prompt(message);
+                if (num == null) return false;
+                if (num != null) {
+                    num = +num;
+                    if (isNaN(num) || num <= 0 || !Number.isInteger(num)) {
+                        alert('Ввeдите целое число, больше нуля!');
+                    }
+                }
+            } while (isNaN(num) || num <= 0 || !Number.isInteger(num));
+            return num;        
+        }
+//----------------------------------------------------------------------------------------------------
+        //Класс велосопидист (генерация результата на этапе)  //
+        class Cyclist {
+            static countCyclist = 0;
+
+            timeFirstStageCount = []; // время этапов первого круга
+            timeSecondStageCount = []; // время этапов второго круга
+
+            constructor(surname, name) {
+                Cyclist.countCyclist++;
+                this.cyclistNumber = Cyclist.countCyclist;
+                this.surname = surname;
+                this.name = name;
+                this.rating = 0;
+            }
+            // генерация результата времени
+            randTime() {
+                let minMinut = 30;
+                let maxMinut = 45;
+                let min = 0;
+                let max = 60;
+
+                let minutes = Math.round(Math.random() * (maxMinut - minMinut) + minMinut);
+                let sec = Math.round(Math.random() * (max - min) + min);
+                let ms = Math.round(Math.random() * (max - min) + min);
+                let time = new Date();
+                
+                return time.setHours(0, minutes, sec, ms);
+            }            
+            // генерация результата на первом этапе
+            setTimeFirstStage() {
+                for (let i = 0; i < N; i++)
+                    this.timeFirstStageCount.push(this.randTime());
+            }
+            // генерация результата на втором этапе
+            setTimeSecondStage() {
+                for (let i = 0; i < 2; i++)
+                    this.timeSecondStageCount.push(this.randTime());
+            }
+
+        }
+//----------------------------------------------------------------------------------------------------
+        //Класс команда (суммарные показатели по команде, или спортсменов в команде)
+        class Team {
+            constructor(country, cyclists) {
+                this.country = country //название страны
+                this.cyclists = cyclists // велосопедисты в команде, можно использовать объеект
+
+            }
+
+            getStageResult() {//промежуточный результат гонщиков на этапе соревнований
+
+            }
+            getMeanRating() {//средний рейтинг членов команды
+
+            }
+        }
+//----------------------------------------------------------------------------------------------------
+        //Класс соревнование (логика проведения соревнований)
+        class Competition {
+
+            constructor(teams, stageCount) {
+                this.teams = teams; //команда
+                this.stageCount = stageCount //количество этапов первого круга
+
+            }
+
+            getCurrentState() {//метод получения текущего состояния (не началось, идёт, завершено)
+
+            }
+            startFirstRound() {//запускает логику первого круга, возвращает результат крага
+
+            }
+            startSecondRound() {
+
+            }
+        }
+
+        //Класс модели (обобщающий бизнесс логику)
+        class Controller {
+            constructor(stgeCount) {
+                this.stageCount = stageCount //количество этапов первого круга
+            }
+
+            startCompetition() {
+
+            }
+            finishCompetition() {
+                
+            }
+        }
+//------------------------------------------------------------------------------------------------------
+        let setCyclist = new Set([ // инициализация велогонщиков!!!
+            new Cyclist('Shilov', 'Anton', 'Russia'),
+            new Cyclist('Borisov', 'Ivan', 'Russia'),
+            new Cyclist('Kusnecov', 'Oleg', 'Russia'),
+            new Cyclist('Ivanov', 'Pavel', 'Russia'),
+
+            new Cyclist('Monti', 'Abele', 'Italy'),
+            new Cyclist('Rossi', 'Andrea', 'Italy'),
+            new Cyclist('Esposito', 'Mario', 'Italy'),
+            new Cyclist('Bruno', 'Fernando', 'Italy'),
+
+            new Cyclist('Nielsen', 'Peter', 'Denmark'),
+            new Cyclist('Andersen', 'Martin', 'Denmark'),
+            new Cyclist('Thomsen', 'Hans', 'Denmark'),
+            new Cyclist('Poulsen', 'Ole', 'Denmark'),
+
+            new Cyclist('Peeters', 'Alexis', 'Belgium'),
+            new Cyclist('Janssens', 'Clement', 'Belgium'),
+            new Cyclist('Willems', 'Jelle', 'Belgium'),
+            new Cyclist('Goossens', 'Louis', 'Belgium'),
+
+            new Cyclist('Balestre', 'Andre', 'France'),
+            new Cyclist('Guichard', 'Bernard', 'France'),
+            new Cyclist('Dufour', 'Lammert', 'France'),
+            new Cyclist('de La Fare', 'Mishel', 'France'),
+
+            new Cyclist('Fischer', 'Peter', 'Germany'),
+            new Cyclist('Schneider', 'Stephan', 'Germany'),
+            new Cyclist('Meyer', 'Uwe', 'Germany'),
+            new Cyclist('Müller', 'Jorg', 'Germany'),
+
+            new Cyclist('Alonso', 'Agustín', 'Spain'),
+            new Cyclist('Ferrer', 'Gustavo', 'Spain'),
+            new Cyclist('Castillo', 'Benito', 'Spain'),
+            new Cyclist('Rubio', 'Francisco', 'Spain'),
+
+            new Cyclist('Silva', 'Alessandro', 'Portugal'),
+            new Cyclist('Ferreira', 'Caio', 'Portugal'),
+            new Cyclist('Oliveira', 'Diogo', 'Portugal'),
+            new Cyclist('Rodrigues', 'Elvis', 'Portugal'),
+
+            new Cyclist('Williams', 'Ethan', 'USA'),
+            new Cyclist('Smith', 'Michael', 'USA'),
+            new Cyclist('Thompson', 'Jacob', 'USA'),
+            new Cyclist('Scott', 'Oscar', 'USA'),
+
+            new Cyclist('Abramson', 'Jack', 'Great Britain'),
+            new Cyclist('Cook', 'Charley', 'Great Britain'),
+            new Cyclist('Dyson', 'George', 'Great Britain'),
+            new Cyclist('Goodman', 'Harry', 'Great Britain'),
+        ])
+
+        const N = chekNumber('Введите число этапов первого круга!');
+
+        setCyclist.forEach((value) => value.setTimeFirstStage());// Присваивание времени первого этапа
+
+
+
+        setCyclist.forEach((value) => console.log(value.timeFirstStageCount)); //test
+
+
+
+
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        /**
+         * Проверяет вводимое значение.
+         * 
+         * @param {string} mesege Сообщение пользователю.
+         * 
+         * @return {number} num Возвращает проверенное значение.
+        */
+        function chekNumber(message) {
+            let num;
+            do {
+                num = prompt(message);
+                if (num == null) return false;
+                if (num != null) {
+                    num = +num;
+                    if (isNaN(num) || num <= 0 || !Number.isInteger(num)) {
+                        alert('Ввeдите целое число, больше нуля!');
+                    }
+                }
+            } while (isNaN(num) || num <= 0 || !Number.isInteger(num));
+            return num;        
+        }
+//----------------------------------------------------------------------------------------------------
+        //Класс велосопидист (генерация результата на этапе)  //
+        class Cyclist {
+            static #countCyclist = 0;
+
+            // статическая функция генераци велосопедиста
+            static generate() {
+                let min = 0;
+                let max = 39;
+
+                let rand = Math.round(Math.random() * (max - min) + min);
+                let name = this.arrayName[rand];
+                rand = Math.round(Math.random() * (max - min) + min);
+                let surname = this.arrayName[rand];
+
+                return new Cyclist(surname, name);
+            }
+
+            constructor() {
+                Cyclist.#countCyclist++;
+                this.cyclistNumber = Cyclist.countCyclist;
+                this.surname = surname;
+                this.name = name;
+                this.rating = 0;
+
+                let arraySurname = ['Shilov', 'Borisov', 'Kusnecov', 'Ivanov', 'Monti', 'Rossi', 'Esposito', 'Bruno', 'Nielsen', 'Andersen', 'Thomsen', 'Poulsen', 
+                'Peeters', 'Janssens', 'Willems', 'Goossens', 'Balestre', 'Guichard', 'Dufour', 'de La Fare', 'Fischer', 'Schneider', 'Meyer', 'Müller', 'Alonso', 
+                'Ferrer', 'Castillo', 'Rubio', 'Silva', 'Ferreira','Oliveira', 'Rodrigues', 'Williams', 'Smith', 'Thompson', 'Scott', 'Abramson', 'Cook', 'Dyson', 
+                'Goodman',
+                ]
+
+                let arrayName = ['Anton', 'Ivan', 'Oleg', 'Pavel', 'Abele', 'Andrea', 'Mario', 'Fernando', 'Peter', 'Martin', 'Hans', 'Ole', 'Alexis', 'Clementelgium',
+                'Jelle', 'Louis', 'Andre', 'Bernardrance', 'Lammert', 'MisheFrance', 'Peter', 'Stephan', 'Uwe', 'Jorg', 'Agustín', 'Gustavo', 'Benito', 'Francisco',
+                'Alessandroortugal', 'Caio', 'Diogo', 'Elvis', 'Ethan', 'Michael', 'Jacob', 'Oscar', 'Jack', 'Charley', ' Britain', 'George', 'Britain', 'Harry',
+                ]
+
+
+            }
+            // генерация результата времени
+            randTime() {
+                let minMinut = 30;
+                let maxMinut = 45;
+                let min = 0;
+                let max = 60;
+
+                let minutes = Math.round(Math.random() * (maxMinut - minMinut) + minMinut);
+                let sec = Math.round(Math.random() * (max - min) + min);
+                let ms = Math.round(Math.random() * (max - min) + min);
+                let time = new Date();
+                
+                return time.setHours(0, minutes, sec, ms);
+            }            
+            // генерация результата на первом этапе
+            setTimeFirstStage() {
+                for (let i = 0; i < N; i++)
+                    this.timeFirstStageCount.push(this.randTime());
+            }
+            // генерация результата на втором этапе
+            setTimeSecondStage() {
+                for (let i = 0; i < 2; i++)
+                    this.timeSecondStageCount.push(this.randTime());
+            }
+
+        }
+
+        //console.log()
+        console.log(Cyclist.generate());
+
+    </script>
+</body>
+</html>
