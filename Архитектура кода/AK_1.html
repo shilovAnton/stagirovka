@@ -37,13 +37,14 @@
 
             timeFirstStageCount = []; // время этапов первого круга
             timeSecondStageCount = []; // время этапов второго круга
+            rating = 0;
 
-            constructor(surname, name) {
+            constructor(surname, name, country) {
                 Cyclist.countCyclist++;
                 this.cyclistNumber = Cyclist.countCyclist;
                 this.surname = surname;
                 this.name = name;
-                this.rating = 0;
+                this.country = country;
             }
             // генерация результата времени
             randTime() {
@@ -74,10 +75,22 @@
 //----------------------------------------------------------------------------------------------------
         //Класс команда (суммарные показатели по команде, или спортсменов в команде)
         class Team {
-            constructor(country, cyclists) {
-                this.country = country //название страны
-                this.cyclists = cyclists // велосопедисты в команде, можно использовать объеект
 
+            cyclists = new Set;
+
+            constructor(country) {
+                this.country = country //название страны
+
+            }
+            // заполнение велосопедистами по стране
+            static initTeam(teams, cyclists) {
+                for (let item of teams) {
+                    for (let i of cyclists) {
+                        if (item.country == i.country) {
+                            item.cyclists.add(i)
+                        }
+                    }
+                }    
             }
 
             getStageResult() {//промежуточный результат гонщиков на этапе соревнований
@@ -91,11 +104,15 @@
         //Класс соревнование (логика проведения соревнований)
         class Competition {
 
+            static N; //число кругов первого этапа соревнований 
+
             constructor(teams, stageCount) {
                 this.teams = teams; //команда
                 this.stageCount = stageCount //количество этапов первого круга
 
             }
+
+            static get 
 
             getCurrentState() {//метод получения текущего состояния (не началось, идёт, завершено)
 
@@ -122,7 +139,7 @@
             }
         }
 //------------------------------------------------------------------------------------------------------
-        let setCyclist = new Set([ // инициализация велогонщиков!!!
+        let setCyclists = new Set([ // инициализация велогонщиков!!!
             new Cyclist('Shilov', 'Anton', 'Russia'),
             new Cyclist('Borisov', 'Ivan', 'Russia'),
             new Cyclist('Kusnecov', 'Oleg', 'Russia'),
@@ -174,13 +191,28 @@
             new Cyclist('Goodman', 'Harry', 'Great Britain'),
         ])
 
+        let setTeams = new Set([ // инициализация команд!!!
+            new Team('Russia'),
+            new Team('Italy'),
+            new Team('Denmark'),
+            new Team('Belgium'),
+            new Team('France'),
+            new Team('Germany'),
+            new Team('Spain'),
+            new Team('Portugal'),
+            new Team('USA'),
+            new Team('Great Britain'),
+        ])
+
+        Team.initTeam(setTeams, setCyclists);
+        
         const N = chekNumber('Введите число этапов первого круга!');
 
-        setCyclist.forEach((value) => value.setTimeFirstStage());// Присваивание времени первого этапа
+        setCyclists.forEach((value) => value.setTimeFirstStage());// Присваивание времени первого этапа
 
 
-
-        setCyclist.forEach((value) => console.log(value.timeFirstStageCount)); //test
+//console.log(setTeams);
+        setTeams.forEach((value) => console.log(value.cyclists)); //test
 
 
 

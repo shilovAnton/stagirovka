@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="БД_демодень">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/БД/БД_демодень/БД_демодень.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
