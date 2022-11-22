@@ -1,0 +1,30 @@
+@startuml
+
+autonumber
+actor "Адм. доставки" as A
+participant "Desktop" as SPA
+participant "PL/SQL" as API
+database DataBase
+
+A -> SPA: Дай мне форму для авторизации
+activate SPA
+SPA --> A: Вот форма для авторизации
+A -> SPA: Держи логин и пароль
+SPA -> API: Данные авторизации из формы
+activate API
+API -> DataBase: Проверь пароль и логин на соответствие
+activate DataBase
+
+API <-- DataBase: Результат проверки
+deactivate DataBase
+alt Если успешно
+   API --> SPA: Успешное подключение к БД
+   SPA --> A: Вы успешно авторизированы
+else иначе
+   API --> SPA: Ошибка авторизации
+   deactivate API
+   SPA --> A: Пароль или логин введён неверно
+   deactivate SPA
+end
+
+@enduml
