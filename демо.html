@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict"
+
+        let imgColor = [ 
+            [  [3, 0, 1], [4, 18, 21], [34, 6, 7]  ],       
+            [  [14, 11, 10], [5, 12, 20], [11111, 15, 1] ],
+            [  [2, 13, 12], [21, 212, 11], [103, 57, 43] ],
+            [  [11, 17, 16], [45, 24, 2], [77, 15, 19] ] 
+        ];
+
+        function gray(...Array) {
+            return 0.299 * Array[0] + 0.587 * Array[1] + 0.114 * Array[2];
+        };
+
+
+
+        let count = 0; 
+        let lench = 0;
+
+        let imgGray = imgColor.map( y => ( y.map( x =>  Math.round(gray(...x)) ) ) );
+
+        imgGray.forEach( y => ( y.forEach( x =>  {
+            if (x <= 127) count++
+            lench++
+            })));
+
+        if (count > lench / 2) {
+            console.log("В изображении преобладают темные тона")
+        } else {
+            console.log("В изображении преобладают светлые тона")
+        }
+
+        
+
+
+
+        console.log(count, lench)
+        imgGray.forEach( x => console.log(x) );   
+    </script>
+</body>
+</html>
